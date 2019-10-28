@@ -68,12 +68,12 @@
   - Red, Green, Refactor
   - Make it work (shameless green), Make it right, Make it fast
   - Debugging tools: binding.pry & puts
-- Best Practices in coding
-  - Single Responsibility Principle
-  - Keep code DRY (DON'T REPEAT YOURSELF) principle: refactor code if redundant
 - Array and hash methods!
   - Iterator methods: `#each`, `#map`, `#find` & `#select`
   - Single-line blocks versus do & end multi-line blocks
+- Best Practices in coding
+  - Single Responsibility Principle
+  - Keep code DRY (DON'T REPEAT YOURSELF) principle: refactor code if redundant
 - Questions!?
 
 ## More Administrative 🤓
