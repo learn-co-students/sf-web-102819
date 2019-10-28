@@ -117,33 +117,21 @@ def game_hash
   }
 end
 
-# game_hash[:home][:players]["Alan Anderson"][:points]
-
-def num_points_scored(player_name)
-  # get a list of all the players
-  # find the player whose name matches the argument 'player_name'
-  # return that player's points
-  # game_hash.each do |
-  get_players.each do |player, stats|
-    if player == player_name
-      return stats[:points]
-    end
-  end
-end
-
 # # EXERCISE
 # # What do the following return?
-#
-# arr = (1..100).to_a
-#
-# arr.map do |num|
-#   num.even?
-# end
-#
-# arr.select do |num|
-#   7
-# end
 
+arr = (1...100).to_a
+
+arr_even_map = arr.map do |num|
+  num.even?
+end
+
+arr_select_seven = arr.select do |num|
+  num == 7
+end
+
+# Pry.start
+# puts "Pry guy"
 
 instructors = [
   {name: 'Alex', hometown: 'upstate ny', mood: 'excited'},
@@ -153,16 +141,41 @@ instructors = [
 
 # EXERCISE:
 # Define a method called get_names that takes an array of instructors
-# Returns just their names.
-def get_names(instructors)
-  instructors.map do |instructor|
-    instructor[:name]
+# Returns an array of just their names.
+def get_names(instr_arr)
+  new_instr_arr = []
+  index = 0
+  instr_arr.length.times do
+    new_instr_arr << instr_arr[index][:name]
+    index += 1
+  end
+  new_instr_arr
+end
+
+def get_instr_names(instr_arr)
+  instr_arr.map do |instr_hash|
+    instr_hash[:name]
   end
 end
 
-binding.pry
+# Pry.start
+# puts "Pry guy"
 
-# helper method
-def get_players
+def num_points_scored(player_name)
+  # get a list of all the players
+  all_players = get_all_players(game_hash)
+  # find the player whose name matches the argument 'player_name'
+  all_players[player_name][:points]
+  # return that player's points
+end
+
+def shoe_size(player_name)
+  all_players = get_all_players(game_hash)
+  all_players[player_name][:shoe]
+end
+
+# HELPER METHODS:
+# helper method that returns all players, regardless of team
+def get_all_players(game_hash)
   game_hash[:home][:players].merge(game_hash[:away][:players])
 end
