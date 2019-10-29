@@ -37,7 +37,7 @@ bank_account = {"user_id": 3, "balance": 100}
 
 ### Creating Objects in Ruby 🏭
 
-- **Create a class instantiate an instance of the class `BankAccount`**
+- **Instantiate an instance of the class `BankAccount`**
   - TitleCase classes, e.g. `class ClassName`
   - `#new`
   - `#object_id`

@@ -1,36 +1,40 @@
 require 'pry'
 
-class Account
-    attr_reader :customer_id
-    attr_accessor :balance
+class BankAccount
+  attr_reader :balance, :type
 
-    @@all = []
+  @@all = []
 
-    def self.all
-        @@all
-    end
+  # class method
+  def self.all
+    @@all
+  end
 
-    def initialize(customer_id, balance)
-        @customer_id = customer_id
-        @balance = balance
-        @@all << self
-    end
+  def initialize(type, balance = 0)
+    @balance = balance
+    @type = type
+    @@all << self
+  end
 
-    # def customer_id
-    #     @customer_id
-    # end
+  # def balance
+  #   @balance
+  # end
 
-    # def balance=(balance)
-    #     @balance = balance
-    # end
+  # def balance=(new_balance)
+  #   @balance = new_balance
+  # end
 
-    # def balance
-    #     @balance
-    # end
+  def deposit(amount)
+    @balance += amount
+  end
+
+  def withdraw(amount)
+    @balance -= amount
+  end
 end
 
-new_account = Account.new(1, 100)
+acct = BankAccount.new(100, "checking")
+acct2 = BankAccount.new(500, "savings")
 
-binding.pry
-
-puts "Account creator"
+Pry.start
+puts "words"
