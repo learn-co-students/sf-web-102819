@@ -36,5 +36,5 @@ end
 acct = BankAccount.new(100, "checking")
 acct2 = BankAccount.new(500, "savings")
 
-Pry.start
-puts "words"
+# Pry.start
+# puts "words"
