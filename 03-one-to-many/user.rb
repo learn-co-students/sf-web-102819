@@ -1,27 +1,24 @@
 # User class definition
 class User
-    attr_reader :username
-    # attr_accessor :tweets
+  attr_reader :username
 
-    @@all = []
+  @@all = []
 
-    def self.all
-        @@all
-    end
+  def self.all
+    @@all
+  end
 
-    def initialize(username)
-        @username = username
-        # @tweets = []
-        @@all << self
-    end
+  def initialize(username)
+    @username = username
+    @@all << self
+  end
 
-    def tweets
-        # @tweets
-        Tweet.all.select { |tweet| tweet.user == self }
-    end
+  def post_tweet(message)
+    self
+    @tweets << message
+  end
 
-    def post_tweet(message, user)
-        new_tweet = Tweet.new(message, self)
-        # @tweets << new_tweet
-    end        
+  def tweets
+    Tweet.all.select { |tweet| tweet.user == self }
+  end
 end
