@@ -1,7 +1,6 @@
 # 1. Create recipe class
 class Recipe
   # 2. Add getter & setter (reader & writer) methods for recipe name, serving size & ingredients
-  # 3. What do getter & setter methods look like without the macro
   attr_accessor :name, :serving_size#, :ingredients
 
   # 7. Keep all of our recipes in one place
@@ -9,7 +8,7 @@ class Recipe
 
   # 4. Create method that will take a recipe name to create a new recipe
   # 5. Add a default argument for serving size
-  def initialize(name, serving_size = 1)
+  def initialize(name, serving_size = "1 serving")
     @name = name
     @serving_size = serving_size
     # 6. How should we keep track of ingredients?
@@ -24,11 +23,7 @@ class Recipe
     @@all
   end
 
-  def add_ingredient(ingredient, amount = "1 smigden")
-    RecipeIngredient.new(self, ingredient, amount)
-  end
-
-  def recipe_ingredients # Accessing just the recipe ingredients that belong to this particular recipe
+  def recipe_ingredients
     RecipeIngredient.all.select do |recipe_ingredient|
       recipe_ingredient.recipe == self
     end
@@ -39,6 +34,9 @@ class Recipe
       recipe_ingredient.ingredient
     end
   end
+
+  def add_ingredient(ingredient, amount = "1 smidgen")
+    RecipeIngredient.new(self, ingredient, amount)
+  end
+
 end
-
-
