@@ -1,15 +1,18 @@
 class Dog < Pet
+
+  @@dogs = []
+
+  def initialize(name, mood = "nervous")
+    super
+    @@dogs << self
+  end
+
   def talk
-    puts "Woof!"
+    super
+    puts "Woof woof bowow"
+  end
+
+  def self.all
+    @@dogs
   end
 end
-
-# class Dog < Animal
-  # attr_reader :name
-  # attr_accessor :mood
-  #
-  # def initialize(name)
-  #   @name = name
-  #   @mood = 'nervous'
-  # end
-# end
