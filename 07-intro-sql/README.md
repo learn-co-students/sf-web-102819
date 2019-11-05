@@ -36,26 +36,26 @@ ALTER TABLE fans
 ADD artist_id INTEGER;
 ```
 
-5. Write the SQL to add yourself as a fan of the Black Eyed Peas? ArtistId **169**
+5. Write the SQL to add yourself as a fan of the Black Eyed Peas?
 
 ```sql
-INSERT INTO fans (name, artist_id) 
-VALUES ("Tori", 169);
+INSERT INTO fans (name, artist_id)
+VALUES ("Megan", 169);
 ```
 
 6. Check out the [Faker gem](https://github.com/stympy/faker). `gem install faker`, open up irb, run `require 'faker'` and then generate a fake name for yourself using `Faker::Name.name`. How would you update your name in the fans table to be your new name?
 
 ```sql
 UPDATE fans
-SET name = "Tammera Schneider"
-WHERE name = "Tori";
+SET artist_id = 170
+WHERE name = "Megan";
 ```
 
 7. Write the SQL to return fans that are not fans of the black eyed peas.
 
 ```sql
 SELECT * FROM fans
-WHERE artist_id != 169;
+WHERE artist_id != 170;
 ```
 
 8. Write the SQL to display an artists name next to their album title
@@ -68,19 +68,20 @@ JOIN albums ON albums.artist_id == artists.id;
 9. Write the SQL to display artist name, album name and number of tracks on that album
 
 ```sql
-SELECT artists.name, title, COUNT(*) FROM artists
+SELECT artists.name, albums.title, COUNT(*) FROM artists
 JOIN albums ON albums.artist_id == artists.id
 JOIN tracks ON tracks.album_id == albums.id
-GROUP BY title;
+GROUP BY albums.title;
 ```
 
 10. Write the SQL to return the name of all of the artists in the 'Pop' Genre
 
 ```sql
-SELECT artists.name, genres.name FROM albums 
-INNER JOIN artists ON albums.artist_id = artists.id
-INNER JOIN tracks ON albums.id = tracks.album_id
-INNER JOIN genres ON tracks.genre_id = genres.id
+SELECT artists.name, genres.name FROM artists
+JOIN albums ON albums.artist_id == artists.id
+JOIN tracks ON tracks.album_id == albums.id
+JOIN genres ON genres.id == tracks.genre_id
+WHERE genres.name == "Pop"
 GROUP BY artists.name;
 ```
 
@@ -93,13 +94,12 @@ GROUP BY artists.name;
     from greatest to least
 
 ```sql
-SELECT artists.name, COUNT(*) FROM artists 
-INNER JOIN albums ON  artists.id = albums.artist_id
-INNER JOIN tracks ON albums.id = tracks.album_id
-INNER JOIN genres ON tracks.genre_id = genres.id
-WHERE genres.name = "Rock"
+SELECT artists.name, COUNT(*) FROM artists
+JOIN albums ON albums.artist_id == artists.id
+JOIN tracks ON tracks.album_id == albums.id
+JOIN genres ON genres.id == tracks.genre_id
+WHERE genres.name == "Rock"
 GROUP BY artists.name
-HAVING COUNT(*) > 30
+HAVING COUNT(*) >= 30
 ORDER BY COUNT(*) DESC;
 ```
-
