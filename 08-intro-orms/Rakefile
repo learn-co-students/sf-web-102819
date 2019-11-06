@@ -1,0 +1,11 @@
+require_relative 'config/environment'
+
+desc 'Loads up a console!'
+task :console do
+  Pry.start
+end
+
+desc 'Generates hipster gibberish.'
+task :hipster_words do
+  puts Faker::Hipster.sentence
+end
