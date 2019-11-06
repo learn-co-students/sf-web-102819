@@ -11,3 +11,4 @@ Lecture notes for SF's 2nd cohort!
 | Review and Inheritance | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/05-intro-inheritance-oo-my-pets) | [Link to video](https://youtu.be/ACzv9-XNlQ0) |
 | Code Challenge Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/06-cc-review) | [Link to video](https://youtu.be/s52oCsqsOIk) |
 | Intro to SQL | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/07-intro-sql) | [Link to video](https://youtu.be/Yfb_Ut-uD_A) |
+| Intro to ORM | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/08-intro-orm) | [Link to video](https://youtu.be/5361y5YoEig) |
