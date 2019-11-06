@@ -12,10 +12,10 @@ class TweetsApp
     tweet = Tweet.new({'username' => username, 'message' => message})
     
     # Save tweet in DB
-    tweet.save
+    # tweet.save
 
-    tweets = Tweet.all
-    render(tweets)
+    # tweets = Tweet.all
+    # render(tweets)
   end
 
   private

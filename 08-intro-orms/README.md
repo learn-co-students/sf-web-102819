@@ -17,78 +17,68 @@
 **books table**
 
 | id | title | author_id |
-| --- |--- | --- |
-| 1 | The Sympathizer | 1 |
-| 2 | New and Selected Poems, Volume 2 | 5 |
-| 3 | One Hundred Years of Solitude | 3 |
-| 4 | War and Peace | 4 |
-| 5 | Sula | 2 |
+| --- | --- | --- |
+| 1 | To Kill a Mockingbird | 2 |
+| 2 | Water for Elephants | 3 |
+| 3 | The Three-Body Problem | 1 |
 
 **authors table**
 
 | id | name |
 | --- | --- |
-| 1 | Viet Thanh Nguyen |
-| 2 | Toni Morrison |
-| 3 | Gabriel Garcia Marquez |
-| 4 | Leo Tolstoy |
-| 5 | Mary Oliver |
+| 1 | Cixin Liu |
+| 2 | Harper Lee |
+| 3 | Sara Gruen |
 
-**2. Write the SQL to find all books written by a certain author given the author's id.**
+**2. Write the SQL to find all books written by a certain author given the author's id (Sara Gruen's).**
 
 ```SQL
-SELECT * FROM books WHERE author_id = 2;
+SELECT * FROM books
+WHERE author_id == 3;
 ```
 
 **3. Create a *books* table and an *authors* table where each author can have one or multiple books. Books should have a *title* and authors should have a *name*.**
 
 **books table**
 
-id | title
----|---
-1 | The Sympathizer
-2 | New and Selected Poems, Volume 2
-3 | One Hundred Years of Solitude
-4 | War and Peace
-5 | Sula
-6 | Ana Karenina
-7 | The Death of Ivan Ilyich
-8 | Love in the Time of Cholera
+| id | title |
+| --- | --- | --- |
+| 1 | To Kill a Mockingbird |
+| 2 | Water for Elephants |
+| 3 | The Three-Body Problem |
+| 4 | Go Set A Watchman |
+| 5 | Death's End |
 
 **book_authors (join) table**
 
-id | book_id | author_id
----|---|---
-1 | 1 | 1
-2 | 2 | 5
-3 | 3 | 3
-4 | 4 | 4
-5 | 5 | 2
-6 | 6 | 4 
-7 | 7 | 4
-8 | 8 | 3
+| id | author_id | book_id |
+| --- | --- | --- |
+| 1 | 2 | 1 |
+| 2 | 3 | 2 |
+| 3 | 1 | 3 |
+| 4 | 4 | 3 |
+| 5 | 2 | 4 |
 
 **authors table**
 
-id | name
----|---
-1 | Viet Thanh Nguyen
-2 | Toni Morrison
-3 | Gabriel Garcia Marquez
-4 | Leo Tolstoy
-5 | Mary Oliver
+| id | name |
+| --- | --- |
+| 1 | Cixin Liu |
+| 2 | Harper Lee |
+| 3 | Sara Gruen |
+| 4 | Ken Liu |
 
 ## CRUD 🎨
 
 *What are the four ways we can interact with data? What might this interaction look like in SQL? In Ruby?*
 
-**Create**
+### Create
 
-- `INSERT INTO books (title, author_id) VALUES ('War and Peace', 2);`
-- `book = Book.new({'title' => 'War and Peace', 'author_id' => 2})`
-- `book.save` 
+- `CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT);`
+- `INSERT INTO books (title) VALUES ("The Three-Body Problem");`
+- `Book.new`
 
-**Read**
+### Read
 
 - `SELECT * FROM books;`
 - `Book.all`
@@ -96,15 +86,15 @@ id | name
 - `Book.find(5)`
 - `Book.find_by(id: 5)`
 
-**Update**
+### Update
 
 - `UPDATE books SET title = 'Ana Karenina' WHERE id = 5`
-- `book.update({'title' => 'Ana Karenina'})`
+- `Book#update({'title' => 'Ana Karenina'})`
 
-**Delete**
+### Delete
 
-- `book.delete`
-- `DELETE FROM books WHERE id = 3`
+- `DELETE FROM books WHERE id = 3;`
+- `Book#delete`
 
 ## The Active Record Pattern 🧩
 

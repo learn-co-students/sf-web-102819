@@ -11,97 +11,67 @@ class Tweet
   def initialize(props = {})
     @message = props['message']
     @username = props['username']
-    @id = props['id']
-    unless in_db?
-      save
-      set_instance_id
-    end
-    @@tweets << self
+    save
   end
 
   # Put the C in CRUD with #save
   # tweet = Tweet.new({'username' => 'coffee_dad', 'message' => 'coffee'})
   def save
-    # if tweet instance already in db, update
     if in_db?
-      update
+      puts "Updating existing instance!"
     else
       sql = <<-SQL
-        INSERT INTO tweets (message, username)
-        VALUES (?, ?);
+        INSERT INTO tweets (username, message) VALUES (?, ?);
       SQL
-    end
 
-    DB[:conn].execute(sql, self.message, self.username)
+      DB[:conn].execute(sql, username, message)
+      set_instance_id
+      puts "Creating new instance!" 
+    end
   end
 
   # Helper method to detect existing tweet
   def in_db?
     sql = <<-SQL
       SELECT * FROM tweets
-      WHERE message = ? AND username = ?;
+      WHERE username == ? AND message == ?;
     SQL
 
-    result = DB[:conn].execute(sql, self.message, self.username)
+    executed_sql = DB[:conn].execute(sql, username, message)
 
-    result == [] ? false : true
+    !executed_sql.empty?
   end
 
   # Return the key of the last instance of the tweets DB table
   def set_instance_id
     sql = <<-SQL
-      SELECT id FROM tweets
+      SELECT * FROM tweets
       ORDER BY id DESC
       LIMIT 1;
     SQL
 
-    results = DB[:conn].execute(sql)
-
-    @id = results[0]["id"]
+    executed_sql = DB[:conn].execute(sql)
+    @id = executed_sql.first["id"]
   end
 
   # Put the R in CRUD with .all!
   # Return an array of all Tweet instances
   def self.all
-    sql = <<-SQL
-      SELECT * FROM tweets;
-    SQL
-
-    results = DB[:conn].execute(sql)
-
-    if @@tweets.empty?
-      results.map do |result|
-        Tweet.new(result)
-      end
-    end
-
-    @@tweets
+    
   end
 
   # Put the R in CRUD with .find_by
   def self.find_by_id(id)
-    @@all.find { |tweet| tweet.id == id }
+    
   end
 
   # Put the U in CRUD with #update
   def update
-    sql = <<-SQL
-      UPDATE tweets 
-      SET message = ?, username = ?
-      WHERE id = ?;
-    SQL
-
-    DB[:conn].execute(sql, self.message, self.username, self.id)
+    
   end
 
   # Put the D in CRUD with .delete_all
   def self.delete_all
-    @@tweets.clear
-
-    sql = <<-SQL
-      DELETE FROM tweets;
-    SQL
-
-    DB[:conn].execute(sql)
+    
   end
 end
