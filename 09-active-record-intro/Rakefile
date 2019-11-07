@@ -1,0 +1,8 @@
+# The Rakefile defines tasks to be run from the command line (view all tasks with `rake -T`)
+require_relative './config/environment'
+require 'sinatra/activerecord/rake' # -> this is where most of our rake tasks come from
+
+desc "Start our app console"
+task :console do
+  Pry.start
+end
