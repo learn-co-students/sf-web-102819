@@ -11,26 +11,13 @@
 ## Review 🔭
 
 - **What is a database?**
-  - A systematic collection of data
 - **What is a database management system (DBMS)?**
-  - A collection of programs that enables users to access database, manipulate data, and represent data
-  - A collection of programs that controls access to the data
-  - Types:
-    - Hierachical
-    - Network
-    - Relational (mySQL, Oracle)
-    - Object Oriented (postgreSQL)
 - ⚠️ _**What is SQL?**_
-  - The standard language for talking to relational databases
 - ⚠️ _**What is Object Relational Mapping (ORM)?**_ 
   - Accessing a relational database (db) using an object-oriented programming language
   - ORMs help us "map" db tables to classes and instances of classes to rows in those tables.
 - ⚠️ _**What is the Active Record pattern?**_
-  - An approach to accessing data in a db using OOP
-  - A **database** corresponds to a **domain**.
-  - Each **table** in the db corresponds to a Ruby **class** (model).
-  - Each **row** in a table corresponds to an **instance** of that model.
-  - Each **column** in our table corresponds to an **attribute** of that model.
+
 
 ---
 

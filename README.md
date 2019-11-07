@@ -12,3 +12,4 @@ Lecture notes for SF's 2nd cohort!
 | Code Challenge Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/06-cc-review) | [Link to video](https://youtu.be/s52oCsqsOIk) |
 | Intro to SQL | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/07-intro-sql) | [Link to video](https://youtu.be/Yfb_Ut-uD_A) |
 | Intro to ORM | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/08-intro-orms) | [Link to video](https://youtu.be/5361y5YoEig) |
+| Intro to ActiveRecord | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/09-active-record-intro) | [Link to video](https://youtu.be/Hx7-VrXoS24) |

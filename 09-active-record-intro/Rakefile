@@ -1,8 +1,14 @@
 # The Rakefile defines tasks to be run from the command line (view all tasks with `rake -T`)
 require_relative './config/environment'
-require 'sinatra/activerecord/rake' # -> this is where most of our rake tasks come from
+# Require the rake folder in the sinatra activerecord gem to get tasks
+require 'sinatra/activerecord/rake'
 
 desc "Start our app console"
 task :console do
   Pry.start
+end
+
+desc "Say something hipster"
+task :hipster do
+  puts Faker::Hipster.sentence
 end
