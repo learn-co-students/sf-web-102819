@@ -1,25 +1,16 @@
-Department.find_or_create_by(name: "Cardiology")
-Department.find_or_create_by(name: "Neurology")
-Department.find_or_create_by(name: "Oncology")
-
-8.times do
-	Doctor.find_or_create_by(
-		name: Faker::Name.name, 
-		department_id:  Faker::Number.between(from: 1, to: 3)
-	)
+20.times do
+	Ingredient.create(name: Faker::Food.ingredient, description: Faker::Hipster.sentence)
 end
 
-8.times do
-	Patient.find_or_create_by(
-		name: Faker::Name.name, 
-		age: Faker::Number.between(from: 1, to: 100)
-	) 
-end
+5.times do
+	new_recipe =	Recipe.create(name: Faker::Food.dish, serving_size: "2 servings")
 
-15.times do
-	Appointment.find_or_create_by(
-		doctor_id: Faker::Number.between(from: 1, to: 8), 
-		patient_id: Faker::Number.between(from: 1, to: 8), 
-		time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-	)
+	3.times do
+		ingredient = Ingredient.all.sample
+		RecipeIngredient.create(
+			recipe_id: new_recipe.id, 
+			ingredient_id: ingredient.id, 
+			amount: Faker::Food.measurement
+		)
+	end
 end
