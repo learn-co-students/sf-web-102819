@@ -13,7 +13,7 @@
 - The Problem: Keeping track of changes
 - The Solution:
   - Git
-    - "Verson control system"
+    - "Version control system"
     - Manages source code history
   - Github
     - Git repository host
