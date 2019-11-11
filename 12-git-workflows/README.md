@@ -1,6 +1,6 @@
 # Git, GitHub, and Workflows
 
-## Goals GOAL GOALS GOALS
+## Goals 🐛
 
 - [ ] Define and distinguish Git and Github 🐙
 - [ ] Compare and contrast initializing, forking, and cloning repositories 🍽
@@ -80,7 +80,7 @@
 - [ ] Git commits are snapshots of changes to code.
 - [ ] Merge conflicts happen when the same file is edited and merged from different branches.
 - [ ] Leveraging branches keeps project and code organized.
-- [ ] Be the best always without compromise and never make mistakes ever
+- [ ] ABC: ALWAYS BE CLOSING
 
 ## Resources 🌳
 
