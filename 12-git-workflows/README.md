@@ -79,10 +79,11 @@
 - [ ] New Git repositories can created remotely or locally.
 - [ ] Git commits are snapshots of changes to code.
 - [ ] Merge conflicts happen when the same file is edited and merged from different branches.
-- [ ] Leveraging branches keeps project and code organized.
-- [ ] In the event of emergency, please use use emergency exits.
+- [ ] Leveraging branches keeps project and code organized. 
 
 ## Resources 🌳
 
 - [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials)
 - [Resources to learn Git](https://try.github.io/)
+- [Git & GitHub Advanced lecture slides](https://docs.google.com/presentation/d/1TINfBSXONL8GdfL5Ej9auUbn4EJ7e9LEzu4iFhOencI/edit?usp=sharing)
+- [Git woes lecture slides](https://docs.google.com/presentation/d/1_pm5OMGYQBsJIzF5ohScGS9s83DElkmWtw-y2obDZgk/edit?usp=sharing)
