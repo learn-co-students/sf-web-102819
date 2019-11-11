@@ -80,7 +80,7 @@
 - [ ] Git commits are snapshots of changes to code.
 - [ ] Merge conflicts happen when the same file is edited and merged from different branches.
 - [ ] Leveraging branches keeps project and code organized.
-- [ ] Be the best always without compromise and never make mistakes ever
+- [ ] In the event of emergency, please use use emergency exits.
 
 ## Resources 🌳
 
