@@ -16,3 +16,9 @@ Lecture notes for SF's 2nd cohort!
 | ActiveRecord Associations | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/10-active-record-associations) | [Link to video](https://youtu.be/bM3o4itkWzQ) |
 | Hashes and the Internet | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/11-hashes-and-the-internet) | [Link to video](https://youtu.be/5GoiwZ0UgCk) |
 | Git Workflows | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/12-git-workflows) | [Link to video](https://youtu.be/bPdwGhm56LI) |
+
+## Module 2
+| Topic            | Code                | Video                |
+| -----            | ----                | -----                |
+| The Internet and Rack | [Link to code](https://github.com/learn-co-students/sf-web-091619/tree/master/13-rack) | [Link to video](https://youtu.be/YxBJYTV9B8w) |
+| Intro to Sinatra | [Link to code](https://github.com/learn-co-students/sf-web-091619/tree/master/14-intro-sinatra-mvc) | [Link to video](https://youtu.be/5Y9r3oPjBH0) |
