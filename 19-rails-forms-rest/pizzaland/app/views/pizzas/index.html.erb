@@ -1,0 +1,4 @@
+<h1>All Pizzas</h1>
+<% @pizzas.each do |pizza| %>
+	<%= link_to pizza.name, pizza_path(pizza.id) %>
+<% end %>

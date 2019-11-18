@@ -1,0 +1,14 @@
+<%= form_for @dinner do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name, class: "form-control" %>
+
+	<%= f.label :cost %>
+	<%= f.text_field :cost, class: "form-control" %>
+
+	<%= f.label :user_id, "User" %>
+	<%= f.select :user_id, @users.map {|u| [u.name, u.id]}, {}, class: 'form-control' %>
+
+  <%#= f.collection_select(:user_id, @users, :id, :name, {}, {:class => 'form-control'}) %>
+
+	<%= f.submit "Create Dinner", class: 'btn btn-primary' %>
+<% end %>

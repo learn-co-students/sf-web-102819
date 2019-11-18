@@ -1,0 +1,16 @@
+<h1><%= @user.name %>'s Dinners:</h1>
+
+<ul>
+	<% @user.dinners.each do |dinner| %>
+		<li><%= link_to dinner.name, dinner %></li>
+	<% end %>
+</ul>
+
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "Add New Dinner", "/dinners/new", class: 'btn btn-primary' %>
+	<%= link_to "Edit User", "/users/#{@user.id}/edit", class: 'btn btn-secondary' %>
+	<%= link_to "Delete User", @user, method: :delete, class: 'btn btn-danger' %>
+
+	<%#= button_to "Delete User", @user, method: :delete, class: 'btn btn-danger' %>
+</div>

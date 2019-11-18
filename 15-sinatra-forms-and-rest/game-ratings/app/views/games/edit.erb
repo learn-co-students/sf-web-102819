@@ -1,0 +1,27 @@
+<h1>Edit <%= @game.title %></h1>
+
+<form action="/games/<%= @game.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	
+	<div class="input-wrapper">
+		<label for="title">Title:</label>
+		<input type="text" name="title" id="title" value="<%= @game.title %>">
+	</div>
+
+	<div class="input-wrapper">
+		<label for="description">Description:</label>
+		<textarea rows="4" cols="50" name="description" id="description"><%= @game.description %></textarea>
+	</div>
+
+	<div class="input-wrapper">
+		<label for="image_url">Image URL:</label>
+		<input type="text" name="image_url" id="image_url" value="<%= @game.image_url %>">
+	</div>
+
+	<div class="input-wrapper">
+		<label for="rating">Rating:</label>
+		<input type="number" name="rating" id="rating" value="<%= @game.rating %>" min="1" max="5">
+	</div>
+
+	<input type="submit" class="button">
+</form>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  species: MyString
+  number_of_teeth: MyString
+  diet: MyString
+  era: MyString
+
+two:
+  name: MyString
+  species: MyString
+  number_of_teeth: MyString
+  diet: MyString
+  era: MyString

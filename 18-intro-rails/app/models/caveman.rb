@@ -1,0 +1,2 @@
+class Caveman < ApplicationRecord
+end

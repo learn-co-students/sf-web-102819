@@ -1,0 +1,46 @@
+<%# Here are three ways to do the same thing %>
+<%# Notice the differences between vanilla html, form_tag, and form_for %>
+<%# The diversion from REST is just so we can show how we might handle %>
+<%# the form's POST request in each case %>
+
+
+<%# Let's start with vanilla HTML.  The only unfamiliar part of this  %>
+<%# should be the auth token.  Rails comes with some built-in form  %>
+<%# security.  Basically, when the server generates a form it gives it  %>
+<%# a unique authorization token.  If the form doesn't return that  %>
+<%# token when it's submitted, rails will reject the request.  %>
+<h3>Old School</h3>
+<form action="/dinosaurs" method="post">
+  <input type="hidden" name="authenticity_token" value="token_value">
+  <input type="text" name="dinosaur[name]" placeholder="name">
+  <input type="text" name="dinosaur[number_of_teeth]" placeholder="number of teeth">
+  <input type="text" name="dinosaur[species]" placeholder="species">
+  <input type="text" name="dinosaur[diet]" placeholder="diet">
+  <input type="text" name="dinosaur[era]" placeholder="era">
+  <input type="submit" value="create dino">
+</form>
+
+<h3>Form Tag</h3>
+<%# Next, let's use form_tag helper method %>
+<%# form_tag and form_for will auto-gen the auth token for us %>
+<%= form_tag "/dinosaurs" do %>
+  <%= text_field_tag "dinosaur[name]", "", placeholder: "name" %>
+  <%= text_field_tag "dinosaur[number_of_teeth]", "", placeholder: "number_of_teeth"  %>
+  <%= text_field_tag "dinosaur[species]", "", placeholder: "species"  %>
+  <%= text_field_tag "dinosaur[diet]", "", placeholder: "diet"  %>
+  <%= text_field_tag "dinosaur[era]", "", placeholder: "era"  %>
+  <%= submit_tag "create dino" %>
+<% end %>
+
+
+<h3>Form For</h3>
+<%# Finally, let's use form_for, which builds a form around a given object %>
+<%# Also notice that the params automatically get namespaced under dinosaur %>
+<%= form_for @dinosaur do |f| %>
+  <%= f.text_field :name, placeholder: "name" %>
+  <%= f.text_field :number_of_teeth, placeholder: "number_of_teeth" %>
+  <%= f.text_field :species, placeholder: "species" %>
+  <%= f.text_field :diet, placeholder: "diet" %>
+  <%= f.text_field :era, placeholder: "era" %>
+  <%= f.submit "create dino" %>
+<% end %>

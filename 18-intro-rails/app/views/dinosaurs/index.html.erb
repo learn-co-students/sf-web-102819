@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<ul>
+
+<% @dinosaurs.each do |dino| %>
+  <li><strong><%= dino.name %></strong></li>
+  <li><%= dino.era %></li>
+  <li><%= dino.species %></li>
+  <li><%= dino.number_of_teeth %></li>
+<% end %>
+</ul>
