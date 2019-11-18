@@ -1,6 +1,6 @@
 <h1><%= @game.title %></h1>
 <p>Description: <%= @game.description %></p>
-</p>Rating: <%= @game.rating %></p>
+<p>Rating: <%= @game.rating %></p>
 <img src="<%= @game.image_url %>" alt="<%= @game.title %>">
 
 <form class="delete-form" action="/games/<%= @game.id %>" method="post">

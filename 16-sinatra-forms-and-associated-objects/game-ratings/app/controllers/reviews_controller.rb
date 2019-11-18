@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
 	post '/reviews' do
 		# game = Game.new(title: params[:game][:title], description: params[:game][:description], image_url: params[:game][:image_url], rating: params[:game][:rating])
+		binding.pry
 		game = Game.new(params[:game].except(:reviews))
 
 		params[:game][:reviews].each do |review_details|
