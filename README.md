@@ -22,3 +22,5 @@ Lecture notes for SF's 2nd cohort!
 | -----            | ----                | -----                |
 | The Internet and Rack | [Link to code](https://github.com/learn-co-students/sf-web-091619/tree/master/13-rack) | [Link to video](https://youtu.be/YxBJYTV9B8w) |
 | Intro to Sinatra | [Link to code](https://github.com/learn-co-students/sf-web-091619/tree/master/14-intro-sinatra-mvc) | [Link to video](https://youtu.be/5Y9r3oPjBH0) |
+| Sinatra Forms and REST | [Link to video (part 1)](https://youtu.be/pKghoUtpgHU) / [Link to video (part 2)](https://youtu.be/pu2F3w-qVjw) | [Link to code](https://github.com/learn-co-students/sf-web-091619/tree/master/15-sinatra-forms-and-rest) |
+| Sinatra Nested Forms and Associations | [Link to code](https://github.com/learn-co-students/sf-web-091619/tree/master/16-sinatra-forms-and-associated-objects) | [Link to video](https://youtu.be/Czq27b7XviU) |
