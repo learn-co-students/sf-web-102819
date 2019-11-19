@@ -19,7 +19,7 @@ class GamesController < ApplicationController
   end
 
   post '/games' do
-    Game.create(params)
+    Game.create(params[:game])
     redirect "/games"
   end
 

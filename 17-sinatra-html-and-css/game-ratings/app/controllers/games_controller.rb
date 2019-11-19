@@ -14,8 +14,8 @@ class GamesController < ApplicationController
 	end
 
 	post '/games' do
-		Game.create(params)
-		redirect "/games"
+		game = Game.create(params[:game])
+		redirect "/games/#{game.id}"
 	end
 
 	get '/games/:id/edit' do
@@ -34,6 +34,6 @@ class GamesController < ApplicationController
 		@game = Game.find(params[:id])
 		@game.destroy
 
-		redirect "games"		
+		redirect "games"
   end
 end
