@@ -25,4 +25,5 @@ Lecture notes for SF's 2nd cohort!
 | Sinatra Forms and REST | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/15-sinatra-forms-and-rest) | [Link to video (part 1)](https://youtu.be/pKghoUtpgHU) / [Link to video (part 2)](https://youtu.be/pu2F3w-qVjw) |
 | Sinatra Nested Forms and Associations | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/16-sinatra-forms-and-associated-objects) | [Link to video](https://youtu.be/Czq27b7XviU) |
 | MVC & Sinatra Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/17-sinatra-html-and-css) | [Link to video](https://youtu.be/ub-ZzcPlrKs) |
+| Intro to Rails | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/18-rails-intro) | [Link to video](https://youtu.be/pBTGQ5b5d1k) |
  

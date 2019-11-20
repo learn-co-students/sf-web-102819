@@ -1,2 +1,0 @@
-class CavemenController < ApplicationController
-end
