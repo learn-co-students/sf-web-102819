@@ -1,6 +1,6 @@
 # Intro to Rails
 
-### Objectives
+## Goals
 
 * Create a new Rails application
 * Describe similarities between Sinatra routing & Rails routing
