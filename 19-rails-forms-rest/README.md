@@ -57,6 +57,8 @@
 
 - `link_to` - `<%= link_to pizza.name, pizza_path(pizza.id) %>` or  `<%= link_to pizza.name, pizza %>` (if we give it an instance it knows to get the right path)
 - `form_for` creates a form for a model object
+- New and edit forms "know" what to do!
+- You can't create or update without strong parameters
 
 ```ruby
 <%= form_for @pizza do |f| %>
@@ -76,6 +78,8 @@
   <%= submit_tag("Search") %>
 <% end %>
 ```
+
+
 
 ## Use private methods 🤫
 
