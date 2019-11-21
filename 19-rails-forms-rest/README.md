@@ -26,13 +26,13 @@
 - `rails g` == `rails generate`
   - Enter this command to see general options and list of generators
   - `rails generate GENERATOR -h` shows options for specific generator
--🎶 **Growing as a software engineer means mastering the three R's.** 🎶
+  - 🎶 **Growing as a software engineer means mastering the three R's.** 🎶
 - `rails generate model` generates model _and_migration
 - `rails generate model NAME [field[:type][:index] field[:type][:index]] [options]`
   - `field`: name of column
   - `type`: data type
   - `index`: index the column (make it more efficient to query)
-- `rails -T` shows us our tasks (remember `rake --T`?)!
+- `rails -T` shows us our tasks (remember `rake -T`?)!
   - `rails db:migrate`
   - `rails db:seed`
   - And so on...
@@ -44,7 +44,8 @@
   - `app/controllers/controller.rb` defines controller, actions
 - Open routes.rb, `get "/MODELs", to: "MODELs#index"` or `resources :MODELs, only: [:index, :show]`
   - Custom path: `get "/MODELs/:id", to: "MODELs#show", as: "something_random"`
-  - To look at all routes in server type `/rails/info/routes`
+  - To look at all routes in server type `localhost:PORT/rails/info/routes` in browser
+  - Or! `rails routes` in console
   - In `rails c` use `app.doctors_path` to get the path
 - `rails g controller MODELs`
   - In rails console: `"person".pluralize`, `"woman".pluralize`, `”human”.pluralize`
@@ -58,8 +59,8 @@
 - `form_for` creates a form for a model object
 
 ```ruby
-<%= form_for @pizza, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-	<%= f.label :name, "Custom Label" %>
+<%= form_for @pizza do |f| %>
+  <%= f.label :name, "Custom Label" %>
   <%= f.text_field :name %>
   <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>
@@ -79,8 +80,9 @@
 ## Use private methods 🤫
 
 - Private methods that aren’t to be called from outside the object
-- Only the object itself is supposed to use them internally, from other methods.
-- In Ruby, not a hard rule, more a suggestion
+- Only the object itself is supposed to use them internally, from other methods
+- In Ruby, not a hard rule, more a suggestion of use
+- Write helper methods to DRY code!
 
 ## Implement strong parameters 🔒
 
