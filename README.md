@@ -27,4 +27,5 @@ Lecture notes for SF's 2nd cohort!
 | MVC & Sinatra Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/17-sinatra-html-and-css) | [Link to video](https://youtu.be/ub-ZzcPlrKs) |
 | Intro to Rails | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/18-intro-rails) | [Link to video](https://youtu.be/pBTGQ5b5d1k) |
 | Rails CRUD | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/19-rails-forms-rest) | [Link to video](https://youtu.be/U1XWIIeJDdc) |
+| Rails Associations | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/20-rails-associations) | [Link to video](https://youtu.be/EpfQpDjrqr4) |
  

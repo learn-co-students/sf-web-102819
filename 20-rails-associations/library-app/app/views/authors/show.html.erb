@@ -1,7 +1,0 @@
-<h2><%= @author.name %></h2>
-<% @author.books.each do |book| %>
-  <h3><%= link_to book.title, book_path(book) %> by <%= @author.name %></h3>
-<% end %>
-<%= button_to "Destroy Author", @book, method: :delete, class: 'btn btn-danger' %>
-<br>
-<%= link_to "All Books", "/books" %>

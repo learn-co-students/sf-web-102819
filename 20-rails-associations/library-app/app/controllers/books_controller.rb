@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :get_authors, only: [:new, :edit]
   
   def index
     @books = Book.all
@@ -10,6 +11,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @author = @book.build_author
   end
 
   def create
@@ -32,16 +34,18 @@ class BooksController < ApplicationController
 
   private
 
+  def get_authors
+    @authors = Author.all
+  end
+
   def find_book
     @book = Book.find(params[:id])
   end
 
-  def find_authors
-    @authors = Author.all
-  end
-
   def book_params
-    params.require(:book).permit(:title, :publisher, :genre, :year, :author_id,
-      :checked_out, author_attributes: [:name, :id])
+    params.require(:book).permit(
+      :title, 
+      :publisher, 
+      :genre, :year, :author_id, :checked_out, author_attributes: [:id, :name])
   end
 end

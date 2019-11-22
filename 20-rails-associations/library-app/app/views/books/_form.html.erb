@@ -2,12 +2,12 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br>
-  <%= f.fields_for :author do |ff| %>
-    <%= ff.label :name %>
-    <%= ff.text_field :name%>
-  <% end %>
   <%#= f.label :author %>
   <%#= f.collection_select :author_id, @authors, :id, :name %>
+  <%= f.fields_for :author do |ff| %>
+    <%= ff.label :name %>
+    <%= ff.text_field :name %>
+  <% end %>
   <br>
   <%= f.label :publisher %>
   <%= f.text_field :publisher %>
