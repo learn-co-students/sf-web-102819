@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   end
 
   def show
-  end
+    end
 
   def new
     @book = Book.new

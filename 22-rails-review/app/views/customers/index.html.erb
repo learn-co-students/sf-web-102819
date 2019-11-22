@@ -1,0 +1,10 @@
+<h2>All Customers</h2>
+<%= form_tag '/customers', method: 'get' do %>
+  <%= hidden_field_tag :sort, "1" %>
+  <%= submit_tag "Sort by Number of Orders" %>
+<% end %>
+<ul>
+  <%= @customers.each do |customer| %>
+    <li><h3><%= link_to customer.name, customer %> (<%= customer.orders.count %>) who loves <%= customer.drink.name %></h3></li>
+  <% end %>
+</ul>

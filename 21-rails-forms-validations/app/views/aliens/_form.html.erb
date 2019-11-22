@@ -1,0 +1,13 @@
+<%= form_for @alien do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :home_planet %>
+  <%= f.text_field :home_planet %> <br>
+  <%= f.label :description %>
+  <%= f.text_area :description  %> <br>
+  <%= f.label :appendages %>
+  <%= f.number_field :appendages  %> <br>
+  <%= f.label :dangerous %>
+  <%= f.check_box :dangerous %><br>
+  <%= f.submit %>
+<% end %>

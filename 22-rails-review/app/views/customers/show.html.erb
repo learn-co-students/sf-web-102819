@@ -1,0 +1,9 @@
+<h2><%= @customer.name %> who loves <%= @customer.drink.name %></h2>
+<ul>
+  <%= @customer.orders.each do |order| %>
+    <li><%= order.cost %>, <%= order.baristum.name %></li>
+  <% end %>
+<ul>
+<%= form_tag @customer, method: "delete" do %>
+  <%= submit_tag "Delete" %>
+<% end %>

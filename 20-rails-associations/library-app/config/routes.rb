@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users, except: :destroy
   resources :books
   # author routes
   resources :authors, only: [:show]
