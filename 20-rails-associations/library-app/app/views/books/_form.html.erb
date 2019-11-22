@@ -1,0 +1,22 @@
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.fields_for :author do |ff| %>
+    <%= ff.label :name %>
+    <%= ff.text_field :name%>
+  <% end %>
+  <%#= f.label :author %>
+  <%#= f.collection_select :author_id, @authors, :id, :name %>
+  <br>
+  <%= f.label :publisher %>
+  <%= f.text_field :publisher %>
+  <br>
+  <%= f.label :genre %>
+  <%= f.text_field :genre %>
+  <br>
+  <%= f.label :year %>
+  <%= f.number_field :year %>
+  <br>
+  <%= f.submit button_text %>
+<% end %>

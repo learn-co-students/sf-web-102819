@@ -1,0 +1,6 @@
+<h1 class="really-big-header">Books Index</h1>
+<% @books.each do |book| %>
+  <h2><%= book.title %> by <%= book.author %></h2>
+  <h3>Published in <%= book.publication_date %></h3>
+  <h3>Checked <%= book.checked_out ? "Out" : "In" %>
+<% end %>

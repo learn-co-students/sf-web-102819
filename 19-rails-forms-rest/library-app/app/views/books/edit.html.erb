@@ -1,0 +1,13 @@
+<h1>Edit a Book!</h1>
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+  <br>
+  <%= f.label :publication_date %>
+  <%= f.number_field :publication_date %>
+  <br>
+  <%= f.submit "Update Book" %>
+<% end %>

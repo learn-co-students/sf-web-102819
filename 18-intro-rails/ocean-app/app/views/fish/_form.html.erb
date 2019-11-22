@@ -1,0 +1,42 @@
+<%= form_with(model: fish, local: true) do |form| %>
+  <% if fish.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fish.errors.count, "error") %> prohibited this fish from being saved:</h2>
+
+      <ul>
+        <% fish.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :species %>
+    <%= form.text_field :species %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.number_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :taste %>
+    <%= form.number_field :taste %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bony %>
+    <%= form.check_box :bony %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

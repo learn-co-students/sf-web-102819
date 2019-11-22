@@ -1,21 +1,20 @@
 class ReviewsController < ApplicationController
-	get '/reviews/new' do
-		erb :'/reviews/new'
-	end
+  get '/reviews/new' do
+    erb :"/reviews/new"
+  end
+  
+  post '/reviews' do
+    binding.pry
+    @game = Game.new(params[:game].except(:reviews))
 
-	post '/reviews' do
-		# game = Game.new(title: params[:game][:title], description: params[:game][:description], image_url: params[:game][:image_url], rating: params[:game][:rating])
-		binding.pry
-		game = Game.new(params[:game].except(:reviews))
+    params[:game][:reviews].each do |review_content|
+      review = Review.new(review_content)
+      review.game = @game
+      review.save
+    end
 
-		params[:game][:reviews].each do |review_details|
-			review = Review.new(review_details)
-			review.game = game
+    @game.save
 
-			review.save
-		end
-
-		game.save
-		redirect "/games"
-	end
+    redirect "/games"
+  end
 end

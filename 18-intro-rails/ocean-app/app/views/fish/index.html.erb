@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fish</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Species</th>
+      <th>Weight</th>
+      <th>Taste</th>
+      <th>Bony</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fish.each do |fish| %>
+      <tr>
+        <td><%= fish.name %></td>
+        <td><%= fish.species %></td>
+        <td><%= fish.weight %></td>
+        <td><%= fish.taste %></td>
+        <td><%= fish.bony %></td>
+        <td><%= link_to 'Show', fish %></td>
+        <td><%= link_to 'Edit', edit_fish_path(fish) %></td>
+        <td><%= link_to 'Destroy', fish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to('New Fish', new_fish_path) %>

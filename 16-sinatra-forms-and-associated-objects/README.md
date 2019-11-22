@@ -74,7 +74,6 @@ Things to keep in mind:
   - Nested forms => nested params
 - Nested forms in Sinatra
   ⚠️ _**What will `name = game[reviews][][content]` look like in params?
-  - `game[reviews][][content]` makes value of `:reviews` an array of hashes with `:content` keys
   - `params#except`
   - When `Model.new` and `Model.save` are useful
 
