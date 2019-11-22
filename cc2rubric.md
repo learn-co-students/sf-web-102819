@@ -42,8 +42,8 @@ Create a form that instantiates an object with an association along with the mod
 | :--: | --- |
 | 1 | No validations. |
 | 2 | Incorrect validations. |
-| 3 | Checks for uniqueness of name but doesn’t use built-in validations, does if/else logic in controller. |
-| 4 | Validations implemented on the superhero model for uniqueness of name. |
+| 3 | Uses `if/else` logic to implement validations. Does not use built-in validation methods. |
+| 4 | Makes use of built-in validation methods. |
 | 5 | Extra validations implemented. |
 
 ### Controllers
