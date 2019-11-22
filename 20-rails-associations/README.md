@@ -1,131 +1,91 @@
-# Rails Associations
-## Create New Application & Generate Models etc.
-	- `rails new dinnerpicker`
-	- `rails g resource User name` & `rails g resource Dinner name cost user:references`
-	- What does `rails g resource` create?
-		- Model
-		- Migration
-		- Controller
-		- Views Folder
-		- Routes
-	- `rails db:migrate`
+# Rails Associations ⛓
 
-## Models
-- Add `has_many :dinners, :dependent => :delete_all` to User model
+## Goals 🦅
 
-## Controllers
-- Generate each route including private methods
+- [ ] Create a full-CRUD Rails app with multiple, associated models 🏘
+- [ ] Use ActiveRecord methods to create associations 🦾
+- [ ] Leverage filters, private methods, and strong parameters to define controller actions 🃏
+- [ ] Render views with partials 🦿
+- [ ] Generate buttons and links with Rails helpers 🤖
 
-- User controller in the end:
-```ruby
-class UsersController < ApplicationController
-	before_action :find_user, only: [:show, :update, :edit, :destroy]
+## Create New App, Generate Resources 🏘
 
-	def index
-		@users = User.all
-	end
+### M: Models and Migrations 🦾
 
-	def show
-	end
+1. `rails new library -M -C -T`
+  a. `rails new -h`: shows us our generation options
+  b. `-M, -C, T-`: no Action Mailer, no Action Cable, no Tests
+2. `rails generate resource Book title author:references publisher checked_out:boolean && rails generate resource Author name`
+  a. `g` short for `generate`
+  b. Write model name singular
+  c. Default type: string
+  d. `:references` creates attribute as foreign key
+  e. `&&` in terminal will run successive process if previous process successful
+3. Write associations in models
+  a. `has_many`, `belongs_to`, et. al. still live!
+  b. `:dependent => :delete_all`
+4. `rails db:migrate`
+  a. After migration, check `schema.rb`
+  b. Don't make any changes unless rolled back
+5. `rails db:seed`
+  a. Populate database with dummy data to test
+  b. `Faker`, loops, `Array#sample` helpful
+6. `rails console`
+  a. Test your database
+  b. Use any/all ActiveRecord methods
 
-	def new
-		@user = User.new
-	end
+### C: Controller Actions and Routes 🃏
 
-	def create
-		@user = User.create(user_params)
-		redirect_to @user
-	end
+1. Check and edit `config/routes.rb` to configure routes
+  a. `resources` generates all 7 RESTful Routes by default
+  b. `get '/create-a-book', to: 'books#new', as: 'create_a_book'`
+  c. Go to `rails routes`, or `localhost:PORT/rails/info/routes` for route info
+2. Write controller actions corresponding to each route
+  a. 7 RESTful Routes => 7 RESTful Controller Actions
+  b. Make sure action is in correct controller!
+3. Write strong parameter method!
+4. Write filters (ex: `before_action`) to DRY code (ex: `find_book`, `find_authors`)
+5. Create view (if needed) corresponding to controller action
 
-	def edit
-	end
+### V: Views 🦿
 
-	def update
-		@user.update(user_params)
-		
-		redirect_to @user
-	end
-
-	def destroy
-		@user.destroy
-
-		redirect_to users_path
-		# or redirect_to @users
-	end
-
-	private
-	def user_params
-		params.require(:user).permit(:name)
-	end
-
-	def find_user
-		@user = User.find(params[:id])
-	end
-end
-```
-
-## Views
-- Create views:
-  - index.html.erb
-  - show.html.erb
-  - new.html.erb (`<%= render partial: "form" %>`)
-  - edit.html.erb (`<%= render partial: "form", locals: {button_text: "Create User"} %>`)
-  - _form.html.erb
-
-- For Dinners _form:
-```html
-<%= form_for @dinner do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name, class: "form-control" %>
-
-	<%= f.label :cost %>
-	<%= f.text_field :cost, class: "form-control" %>
-
-	<%= f.label :user_id, "User" %>
-	<%= f.select :user_id, @users.map {|u| [u.name, u.id]}, {}, class: 'form-control' %>
-
-  <%#= f.collection_select(:user_id, @users, :id, :name, {}, {:class => 'form-control'}) %>
-
-	<%= f.submit "Create Dinner", class: 'btn btn-primary' %>
-<% end %>
-```
-
-- Render partials in new and edit pages
-`<%= render partial: "form" %>`
+1. Create views:
+  a. index.html.erb
+  b. show.html.erb
+  c. new.html.erb
+  d. edit.html.erb
+2. Create partials
+  a. `_form.html.erb`
+  b. `<%= render partial: "form" %>`
+  c. `<%= render partial: "form", locals: {button_text: "Edit Book"}`
 
 https://guides.rubyonrails.org/form_helpers.html#option-tags-from-a-collection-of-arbitrary-objects
 
-- User's show page:
-```html
-<div class="btn-group" role="group" aria-label="Basic example">
-  <%= link_to "Add New Dinner", "/dinners/new", class: 'btn btn-primary' %>
-	<%= link_to "Edit User", "/users/#{@user.id}/edit", class: 'btn btn-secondary' %>
-	<%= link_to "Delete User", @user, method: :delete, class: 'btn btn-danger' %>
+### Bonus: Nested Attributes 🍶
 
-	<%#= button_to "Delete User", @user, method: :delete, class: 'btn btn-danger' %>
-</div>
-```
+- More than one model can be modified at once!
+- In model(s): `accepts_nested_attributes_for :author`
+- In form(s): `f.fields_for :author do |ff|`
+- [Ruby on Rails Nested Attributes](https://www.pluralsight.com/guides/ruby-on-rails-nested-attributes)
 
-- Dinner's show page
-```html
-<h1><%= link_to @dinner.user.name, @dinner.user %> loves <%= @dinner.name %></h1>
+### Bonus: Buttons & Links in HTML and Rails 🤖
 
-<%= button_to "Delete Dinner", @dinner, method: :delete, class: "btn btn-danger" %>
-```
-
-## Extras:
-### Buttons & Links in Rails
 ```ruby
 <%= button_to "Rails Edit Button", { action: :edit }, method: :get %>
 
-<%= link_to "Rails Edit Link", "/users/#{@user.id}/edit" %>
+<%= link_to "Rails Edit Link", "/books/#{@book.id}/edit" %>
 
-<form action="/users/<%= @user.id %>/edit">
+<form action="/books/<%= @book.id %>/edit">
   <input type="submit" value="HTML Button Input" />
 </form>
 
-<a href="/users/<%= @user.id %>/edit">HTML Edit Link</a>
+<a href="/books/<%= @book.id %>/edit">HTML Edit Link</a>
 ```
 
-## Change column
-- `rails g migration change_cost_to_be_integer_in_dinners` & `rails db:migrate`
+## Takeaways 🐣
+
+- [X] `references` designates an attribute as a foreign key
+- [X] ActiveRecord Associations function the same inside Rails as outside
+- [X] Controller filters can be used to DRY controller
+- [X] Partials can be used to DRY views
+- [X] Forms can submit data for more than one model

@@ -1,0 +1,15 @@
+<h3><%= @book.title %> by <%= link_to @book.author.name, author_path(@book.author) %></h3>
+<p><%= @book.genre%>. Published by <%= @book.publisher %> in <%= @book.year %>.</p>
+
+<% if @book.checked_out %>
+  <p>Checked Out.</p>
+  <%= button_to "Check In", @book, method: :patch, params: { book: { checked_out: false }} %>
+<% else %>
+  <p>Available!</p>
+  <%= button_to "Check Out", @book, method: :patch, params: { book: { checked_out: true }} %>
+<% end %>
+
+<%= button_to "Edit Book", edit_book_path(@book), method: :get, class: 'btn btn-danger' %>
+<%= button_to "Delete Book", @book, method: :delete, class: 'btn btn-danger' %>
+<br>
+<%= link_to "All Books", books_path %>

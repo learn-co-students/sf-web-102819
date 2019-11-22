@@ -1,0 +1,6 @@
+<h1>The Library</h1>
+<h2>Check out our Fine Books!</h2>
+<%= link_to "Or, create your own...", "/create-a-book", class: 'btn btn-primary' %>
+<% @books.each do |book| %>
+  <h3><%= link_to book.title, book_path(book) %> by <%= link_to book.author.name, author_path(book.author) %></h3>
+<% end %>
