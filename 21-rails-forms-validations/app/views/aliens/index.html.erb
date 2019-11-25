@@ -1,15 +1,10 @@
 <h1>All Aliens<h1>
 
-<h2>Search</h2>
-<%= form_tag(aliens_path, method: "get") do |f| %>
-  <%= label_tag :search, "Name:" %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search" %>
-<% end %>
+<%= button_to "Create Alien", new_alien_path, method: :get %>
 
 <h2>Aliens</h2>
 <% @aliens.each do |alien| %>
-<h3><%= alien.name %><h3>
+<h3><%= link_to alien.name, alien_path(alien) %><h3>
 <h4>Home Planet: <%= alien.home_planet %></h4>
 <p><%= alien.description %> 
   <% if alien.dangerous %>

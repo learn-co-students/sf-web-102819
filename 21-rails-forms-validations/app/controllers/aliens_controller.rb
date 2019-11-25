@@ -1,8 +1,7 @@
 class AliensController < ApplicationController
-  before_action :find_alien, only: [:show, :edit]
+  before_action :find_alien, only: [:show, :edit, :update]
 
   def index
-    # @aliens = Alien.search(params[:search])
     @aliens = Alien.all
   end
 
@@ -13,6 +12,8 @@ class AliensController < ApplicationController
   end
 
   def update
+    @alien.update(alien_params)
+    validate_check('edit')
   end
 
   def new
@@ -20,19 +21,24 @@ class AliensController < ApplicationController
   end
 
   def create
-    @alien = Alien.create(alien_params)
-    if @alien.valid?
-      redirect_to(aliens_path)
-    else  
-      flash[:errors] = @alien.errors.full_messages
-      redirect_to(new_alien_path)
-    end
+    @alien = Alien.new(alien_params)
+    validate_check('new')
   end
 
   def destroy
   end
 
   private
+
+  def validate_check(failure_path)
+    if @alien.valid?
+      @alien.save
+      redirect_to aliens_path
+    else  
+      flash[:errors] = @alien.errors.full_messages
+      render failure_path
+    end
+  end
 
   def find_alien
     @alien = Alien.find(params[:id])

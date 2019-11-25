@@ -1,0 +1,12 @@
+<h3><%= @alien.name %><h3>
+<h4>Home Planet: <%= @alien.home_planet %></h4>
+<p><%= @alien.description %> 
+  <% if @alien.dangerous %>
+    Dangerous! Attacks with
+  <% else %>
+    Docile. Communicates with
+  <% end %>
+  <%= @alien.appendages %> appendages.
+</p>
+<%= button_to "Edit Alien", edit_alien_path(@alien), method: :get %>
+<%= button_to "All Aliens", aliens_path, method: :get %>

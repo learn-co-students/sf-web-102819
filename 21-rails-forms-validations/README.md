@@ -10,6 +10,16 @@
 
 ---
 
+### Review 🛤
+
+```Slack
+> What RESTful route and controller action corresponds to going to an Alien's show page?
+:apple: `get '/aliens' => 'aliens#index'
+:tangerine: `get '/aliens` => 'aliens#new'
+:banana: `post '/aliens => 'aliens#show' 
+:kiwifruit: `patch 'aliens' => 'aliens#show'
+```
+
 ### Why Use Validations? 🧐
 
 - _Users on your site be like:_

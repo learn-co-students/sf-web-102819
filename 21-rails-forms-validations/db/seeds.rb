@@ -6,15 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Faker::Movies::StarWars.specie
-
 20.times do
   random_boolean = [true, false].sample
+  random_number = rand(1...20)
   Alien.create(
     name: Faker::Movies::StarWars.specie, 
     description: Faker::Movies::StarWars.wookiee_sentence, 
     home_planet: Faker::Movies::StarWars.planet,
-    appendages: rand(1...20),
+    appendages: random_number,
     dangerous: random_boolean
   )
 end
