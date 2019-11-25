@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  barista_id: 1
+  cost: 1
+
+two:
+  customer_id: 1
+  barista_id: 1
+  cost: 1

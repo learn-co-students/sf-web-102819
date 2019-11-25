@@ -1,0 +1,10 @@
+<h1>New Alien</h1>
+<% if flash[:errors]%>
+  <h3>Error creating alien</h3>
+  <ul>
+  <% flash[:errors].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %>
+<%= render "form" %>  

@@ -1,0 +1,22 @@
+<h1>All Aliens<h1>
+
+<h2>Search</h2>
+<%= form_tag(aliens_path, method: "get") do |f| %>
+  <%= label_tag :search, "Name:" %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<h2>Aliens</h2>
+<% @aliens.each do |alien| %>
+<h3><%= alien.name %><h3>
+<h4>Home Planet: <%= alien.home_planet %></h4>
+<p><%= alien.description %> 
+  <% if alien.dangerous %>
+    Dangerous! Attacks with
+  <% else %>
+    Docile. Communicates with
+  <% end %>
+  <%= alien.appendages %> appendages.
+</p>
+<% end %>
