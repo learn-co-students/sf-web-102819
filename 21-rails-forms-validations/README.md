@@ -19,7 +19,7 @@
 - Protect against unwanted, unexpected data
 - Program defensively
 - _Would it make sense for our app to allow a bagel with an empty name to be created?_
-- ActiveRecord provides _several_ built in validations 
+- ActiveRecord provides _several_ built in validations
 - **Read the docs** (linked below)
 - If we need custom functionality, we can also write our own methods
 - Validations will be run **any time i try to write to the database** -> `Bagel.create`, `Bagel.update`, `Bagel#save`
