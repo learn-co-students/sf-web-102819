@@ -1,0 +1,4 @@
+<h1>All Boats</h1>
+<%= @boats.each do |boat| %>
+<h2><%= boat.name %>, a <%= boat.length%>-foot <%= boat.boat_type %>. <%= boat.afloat ? "Still afloat!" : "At the bottom of the ocean." %></h2>
+<% end %>

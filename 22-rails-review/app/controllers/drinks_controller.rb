@@ -1,2 +1,0 @@
-class DrinksController < ApplicationController
-end

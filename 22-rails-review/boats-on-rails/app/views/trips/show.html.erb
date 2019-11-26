@@ -1,0 +1,3 @@
+<h1>Trip Number <%= @trip.id %></h1>
+<h2><%= link_to @trip.passenger.name, passenger_path(@trip.passenger) %></h2>
+<h2><%= link_to @trip.boat.name, passenger_path(@trip.boat) %></h2>

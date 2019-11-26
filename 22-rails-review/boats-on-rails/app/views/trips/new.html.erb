@@ -1,0 +1,15 @@
+<h1>Create a Trip</h1>
+<%= form_for @trip do |f| %>
+  <%= f.label :boat_id %>
+  <%= f.collection_select :boat_id, Boat.all, :id, :name %>
+  <br>
+  <%= f.fields_for :passenger do |ff| %>
+    <%= ff.label :name %>
+    <%= ff.text_field :name %>
+    <br>
+    <%= ff.label :age %>
+    <%= ff.number_field :age %>
+  <% end %>
+  <br>
+  <%= f.submit %>
+<% end %>

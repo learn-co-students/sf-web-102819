@@ -1,0 +1,27 @@
+<h1>Create a Boat</h1>
+<%= form_for @boat do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :boat_type %>
+  <%= f.select :boat_type, Boat.types %>
+  <br>
+  <%= f.label :length %>
+  <%= f.number_field :length %>
+  <br>
+  <%= f.label :afloat %>
+  <%= f.check_box :afloat%>
+  <br>
+  Passenger Information:
+  <br>
+  <%= f.fields_for :passengers do |ff| %>
+    <%= ff.label :name %>
+    <%= ff.text_field :name %>
+    <br>
+    <%= ff.label :age %>
+    <%= ff.number_field :age %>
+    <br>
+  <% end %>
+  <br>
+  <%= f.submit %>
+<% end %>

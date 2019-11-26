@@ -1,0 +1,8 @@
+<h1><%= @boat.name %></h1>
+<h2>A <%= @boat.length%>-foot <%= @boat.boat_type %>. <%= @boat.afloat ? "Still afloat!" : "At the bottom of the ocean." %></h2>
+<h2>Passengers</h2>
+<ul>
+<% @boat.passengers.each do |pass| %>
+  <li><%= pass.name %>, <%= pass.age %></li> 
+<% end %>
+</ul>
