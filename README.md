@@ -30,3 +30,4 @@ Lecture notes for SF's 2nd cohort!
 | Rails Associations | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/20-rails-associations) | [Link to video](https://youtu.be/EpfQpDjrqr4) |
 | Rails Validations | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/21-rails-validations) | [Link to video](https://youtu.be/gM1X2KUpgwk) |
 | Rails Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/22-rails-review) | [Link to video](https://youtu.be/Ro9xEpI6CR4) |
+| Sessions and Cookies | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/23-sessions-cookies) | [Link to video](https://youtu.be/56bn7-XYWz8) |

@@ -17,5 +17,5 @@ class Boat < ApplicationRecord
   #   end
   # end
 
-  accepts_nested_attributes_for :passengers
+  accepts_nested_attributes_for :passengers, reject_if: proc { |attributes| attributes['name'].blank? || attributes['age'].blank? }
 end
