@@ -1,1 +1,4 @@
-This is the page of <%= @user.username %>.
+<h1>Welcome to the page of <%= @user.username %></h2>
+<% if current_user == @user %>
+  <h3>This is my page!!!</h3>
+<% end %>

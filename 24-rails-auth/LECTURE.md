@@ -4,7 +4,7 @@
 
 ### Core
 
-- [ ] Describe the difference between signing up and signing up 📐
+- [ ] Describe the difference between signing in and signing up 📐
 - [ ] Describe the difference between authentication and authorization ⚖️
 - [ ] Implement secure user account creation and storage 🔐
 - [ ] Build sign up, login, and logout features 🛠
@@ -78,8 +78,7 @@
   - Add `has_secure_password` to `app/models/user.rb`
   - `has_secure_password` comes from
   [`ActiveModel` and adds methods to set and authenticate against a BCrypt password](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password):
-  - Add [validations](https://guides.rubyonrails.org/active_record_validations.html) to
-  user
+  - Add [validations](https://guides.rubyonrails.org/active_record_validations.html) to user
   - Test in `rails console`
   - `bcrypt` adds `#authenticate` method
     - `@user.authenticate("passwordstring")`
