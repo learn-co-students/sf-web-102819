@@ -47,11 +47,11 @@
 - Cascade
   - The order of CSS rules matter!
   - When two rules apply and have equal specificity, the one that cames last is the one that's used.
+- Inheritance
+  - Child elements inherit (some) styles of their parents
 - Specificity
   - The more specific the selector, the more its rule will apply.
   - Element < Class < ID
-- Inheritance
-  - Child elements inherit (some) styles of their parents
 
 ## Styling a Site 🕺🏿
 
