@@ -1,0 +1,12 @@
+<%= form_for @player do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name, class: "form-control" %>
+
+	<%= f.label :score %>
+	<%= f.text_field :score, class: "form-control" %>
+
+	<%= f.label :image %>
+	<%= f.text_field :image, class: "form-control" %>
+
+	<%= f.submit "Create Player", class: 'btn btn-primary' %>
+<% end %>
