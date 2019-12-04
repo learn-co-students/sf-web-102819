@@ -1,0 +1,35 @@
+<h1>All Games!</h1>
+
+<div class="games">
+	<% @games.each do |game| %>
+		<div class="game">
+			<div class="image">
+				<img src="<%= game.image_url %>" alt="<%= game.title %>">
+			</div>
+
+			<div class="game-info">
+				<a class="title" href="/games/<%= game.id %>"><%= game.title %></a>
+				<p class="description"><%= game.description %></p>
+				<form id="rating">
+					<fieldset class="rating" id="<%= game.id %>">
+						<input type="radio" id="star5game<%= game.id %>" name="rating" value="5" <%= game.rating == 5 ? 'checked' : '' %> />
+						<label class="full" for="star5game<%= game.id %>" title="Awesome - 5 stars"></label>
+						
+						<input type="radio" id="star4game<%= game.id %>" name="rating" value="4" <%= game.rating == 4 ? 'checked' : '' %> />
+						<label class="full" for="star4game<%= game.id %>" title="Pretty good - 4 stars"></label>
+
+						<input type="radio" id="star3game<%= game.id %>" name="rating" value="3" <%= game.rating == 3 ? 'checked' : '' %> />
+						<label class="full" for="star3game<%= game.id %>" title="Meh - 3 stars"></label>
+
+						<input type="radio" id="star2game<%= game.id %>" name="rating" value="2" <%= game.rating == 2 ? 'checked' : '' %> />
+						<label class="full" for="star2game<%= game.id %>" title="Kinda bad - 2 stars"></label>
+
+						<input type="radio" id="star1game<%= game.id %>" name="rating" value="1" <%= game.rating == 1 ? 'checked' : '' %> />
+						<label class="full" for="star1game<%= game.id %>" title="Sucks big time - 1 star"></label>
+					</fieldset>
+				</form>
+			</div>
+			
+		</div>
+	<% end %>
+</div>

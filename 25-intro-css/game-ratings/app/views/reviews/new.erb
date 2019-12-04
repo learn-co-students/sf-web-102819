@@ -1,0 +1,38 @@
+<h1>Create A New Game & Reviews</h1>
+
+<form action="/reviews" method="post">
+	<h2>New Game</h2>
+	<div class="input-wrapper">
+		<label for="title">Title:</label>
+		<input type="text" name="game[title]" id="title">
+	</div>
+
+	<div class="input-wrapper">
+		<label for="description">Description:</label>
+		<textarea rows="4" cols="50" name="game[description]" id="description"></textarea>
+	</div>
+
+	<div class="input-wrapper">
+		<label for="image_url">Image URL:</label>
+		<input type="text" name="game[image_url]" id="image_url">
+	</div>
+
+	<div class="input-wrapper">
+		<label for="rating">Rating:</label>
+		<input type="number" name="game[rating]" id="rating" min="1" max="5">
+	</div>
+
+	<h2>Review 1</h2>
+	<div class="input-wrapper">
+		<label for="review-content-1">Content:</label>
+		<textarea rows="4" cols="50" name="game[reviews][][content]" id="review-content-1"></textarea>
+	</div>
+
+	<h2>Review 2</h2>
+	<div class="input-wrapper">
+		<label for="review-content-2">Content:</label>
+		<textarea rows="4" cols="50" name="game[reviews][][content]" id="review-content-2"></textarea>
+	</div>
+
+	<input type="submit" class="button">
+</form>
