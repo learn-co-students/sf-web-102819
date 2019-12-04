@@ -55,7 +55,23 @@
 
 ## Styling a Site 🕺🏿
 
-
+- Reset Styles
+  - `*` selector
+  - `html`, `body` selectors
+- Main Body
+  - Variables (`--variable-name`)
+  - Google Fonts for finding fonts
+  - CSS units (`px`, `vh`, `em`, etc)
+  - Padding vs margin
+- Nav
+- Footer
+- Forms
+- Buttons
+- Index
+- Rating
+  - `>` direct child selector
+  - `~` general sibling combinator
+- Media queries
 - [Writing CSS with Accessibility in Mind](https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939)
 - Responsiveness
 
