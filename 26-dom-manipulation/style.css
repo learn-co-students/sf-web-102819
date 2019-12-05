@@ -1,0 +1,16 @@
+body {
+  background-color: steelblue;
+}
+
+div {
+  background-color: white;
+  border: solid black 1px;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+#scare {
+  color: red;
+  font-size: 27px;
+  font-weight: 900;
+}

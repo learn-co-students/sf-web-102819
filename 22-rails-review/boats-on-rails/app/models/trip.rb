@@ -5,5 +5,5 @@ class Trip < ApplicationRecord
   validates :boat_id, presence: true
   validates :passenger_id, presence: true
 
-  accepts_nested_attributes_for :passenger
+  # accepts_nested_attributes_for :passenger
 end
