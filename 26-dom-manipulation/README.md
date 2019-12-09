@@ -1,4 +1,4 @@
-# 🏗 JS Basics: DOM Manipulation 
+# 🏗 JS Basics: DOM Manipulation
 
 ## 🏃🏼‍♀️ Goals
 
@@ -25,7 +25,7 @@
 
 ### 🤔 How to Learn a New Language
 
-**All** programming languages have 3 basic things:
+_**All**_ programming languages have 3 basic things:
 
 1. Syntax (how code must be written)
 2. Programmatic thinking (what processes make code work)
@@ -34,16 +34,18 @@
 ### ⚙️ How JavaScript Works
 
 - JS is a scripting language for the web
-- JS is loaded, interpreted, and executed the browser
+- 🤔 _How is JS loaded in a webpage?_
+- 🤓 JS is loaded, interpreted, and executed the browser
   - Loaded: `.js` files referenced with `<script>` tag in `.html` file
   - Interpreted: Technically _just-in-time compiled_. Code gets compiled at run time. Scripts are run in order, from top to bottom.
   - Executed: Browser JS engine executes interpreted code after HTML and CSS have been assembled into a web page
 - Similarities and differences with Ruby
   - Data Types
-    - Primitive
+    - 🤔 _What are the data types of Ruby? JavaScript?_
+    - 🤓 Primitive
       - Ruby: None, technically (everything's an Object)
       - JS: Number, BigInt, String, Symbol, Boolean, Undefined, Null
-    - Other
+    - 🤓 Other
       - Ruby: Number, String, Symbol, Boolean, Array, Hash
       - JS: Object
   - Building objects
@@ -94,6 +96,7 @@
   ```
 
 - Functions (watch for the `return` keyword!)
+  - Declarations
 
   ```javascript
   function add(a, b) {
@@ -102,6 +105,8 @@
 
   add(2, 3);
   ```
+
+  - Expressions
 
   ```javascript
   let add = function(a, b) {
@@ -125,6 +130,8 @@
     alert("Hi, Stranger...");
   };
   ```
+
+- 🤔 _What questions do you have about JavaScript?_
 
 ## 🕵🏼‍♀️ Smart Searching
 
@@ -155,23 +162,44 @@
 
 [Introduction to the DOM - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
+- A Web page is a document that can be displayed:
+  1. In the browser window.
+  2. As the HTML source.
+- The DOM is a manipulable, object-oriented representation of the document!
+- Look at the _Elements_ tab of your dev tools to see it!
+- API = DOM + JavaScript
+
 ## 🏗 DOM Manipulation
 
-### Grabbing Elements
+### 🚪 Accessing the DOM
+
+- `window` is the JavaScript interface to the DOM container
+  - `window.scrollY`
+  - `window.alert("Make sure you floss daily!")`
+- `document` is the JavaScript interface to the DOM
+  - `addEventListener()` "sets up a function that will be called whenever the specified event is delivered to the target."
+  - `getElementById` "returns an Element object representing the element whose id property matches the specified string."
+- 🤔 _What are other `window` or `document` methods?_ Use dev console and MDN to explore.
+
+### 🐒 Grabbing Elements
 
 - By ID
-  - `document.getElementById('my-id')`
   - `document.querySelector(‘#unique-element')`
+  - `document.getElementById('my-id')`
 - By Class
   - `document.querySelectorAll('.some-shared-class')`
   - `document.getElementsByClassName('some-shared-class')`
 - By Tag
   - `document.getElementsByTagName('body')[0]`
   - `document.getElementById('unique-element')`
-- `get` has wider support and better performance than `query`, but is not as versatile
+- `get` has wider support and maybe better performance than `query`, but is not as versatile
+- Think of adjustable wrench vs. fixed spanner!
 
-### Modifying HTML and CSS
+### 🛠 Modifying HTML and CSS
 
-- `const element = document.createElement(‘ul’)`
-- `li.textContent = prime`
-- `document.body.style.backgroundColor = color` (we need to change our CSS selectors to CamelCase, instead of `background-color` we use `backgroundColor`)
+- `document.createElement`
+- `Element.textContent`
+- `Element.append`
+- And more!!
+- 🆚 _How can we have our webpage load with a random background color_ Hint: chain methods on `document` to set color.
+- 🆚 _How can we add a list of SpongeBob Squarepants characters to page?_ Hint: get parent element, create and append children.

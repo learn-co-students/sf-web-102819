@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   generateTimestamp();
   randomBackgroundColor();
   interactWithWeekdays();
-  generatePrimes();
+  generateList();
 });
 
 function scareAfterTimeout() {
@@ -60,7 +60,7 @@ function interactWithWeekdays() {
   }
 }
 
-function generatePrimes() {
+function generateList() {
   let list = document.getElementById('spongebob');
   let characters = [
     'SpongeBob SquarePants',
