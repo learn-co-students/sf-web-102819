@@ -1,7 +1,9 @@
 # sf-web-102819
+
 Lecture notes for SF's 2nd cohort!
 
 ## Module 1
+
 | Topic            | Code                | Video                |
 | -----            | ----                | -----                |
 | Hashketball Review      | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/01-hashketball-review) | [Link to video](https://youtu.be/6CAr3pyDEX4) |
@@ -18,6 +20,7 @@ Lecture notes for SF's 2nd cohort!
 | Git Workflows | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/12-git-workflows) | [Link to video](https://youtu.be/bPdwGhm56LI) |
 
 ## Module 2
+
 | Topic            | Code                | Video                |
 | -----            | ----                | -----                |
 | The Internet and Rack | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/13-rack) | [Link to video](https://youtu.be/YxBJYTV9B8w) |
@@ -33,3 +36,9 @@ Lecture notes for SF's 2nd cohort!
 | Sessions and Cookies | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/23-sessions-cookies) | [Link to video](https://youtu.be/56bn7-XYWz8) |
 | Authentication and Authorization | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/24-rails-auth) | [Link to video](https://youtu.be/TIre00xplgo) |
 | Intro to CSS | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/25-intro-css) | [Link to video](https://youtu.be/-AEnC--hhoE) |
+
+## Module 3
+
+| Topic            | Code                | Video                |
+| -----            | ----                | -----                |
+| JavaScript and the DOM | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/26-dom-manipulation) | [Link to video](https://youtu.be/9kPt0PgRC-g) |
