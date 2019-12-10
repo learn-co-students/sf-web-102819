@@ -36,7 +36,8 @@ firstBtnOnPage.addEventListener('click', function() {
 });
 ```
 
-> 🤔 _What do these four lines of code code?_
+> 🤔 _What do these four lines of code mean?_
+> 🤓 Here, we tell `addEventListener` to invoke the **anonymous function** passed as the second argument **_when_** the event fires; we're waiting for something to happen then **responding** to this event.
 
 ## Listening for Events 🦻🏼
 
@@ -58,6 +59,13 @@ firstBtnOnPage.addEventListener('click', function() {
 ```
 
 > 🤔 _How can we grab the `comment-form` and listen for events on it?_
+>🤓 We can grab the `comment-form` and listen for events on it like so:
+
+```javascript
+const commentForm = document.getElementById('comment-form');
+// OR querySelector
+// const commentForm = document.querySelector('#comment-form');
+```
 
 - Something to look out for. 
   - If we are loading our js files in the `head` tag of our HTML, there is a chance that the JavaScript code we have written will start executing **before our HTML has been loaded and parsed by the browser**. 
@@ -72,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 ```
 
 > 🤔 _What do these 3 lines of code mean?_
+> 🤓 In the snippet above, we are adding an **event listener** to the document and listening for the `DOMContentLoaded` event. When that event is fired, the anonymous function passed to `addEventListener` will be invoked.
 
 - "`addEventListener()` sets up a function that will be called whenever the specified `event` is delivered to the target. Common targets are HTML `Element`, `Document`, and `Window`" - [MDN `addEventListener` Reference](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 
@@ -359,9 +368,10 @@ helicopterNode.addEventListener('click', function(event) {
 
 ## Takeaways 💎
 
-- [x] A
-- [x] B
-- [x] C
+- [x] One workflow: 1. Grab element. 2. Add event listener. 3. Define event handler. (4. Create new element. 5. Append to DOM.)
+- [x] Scope and hoisting is important! Hoisting means (some) declared variables (only var) and all declared functions are hoisted to the top of their scope.
+- [x] An event handler is the callback function fired when the event listener is triggered.
+- [x] Function declarations != function expressions. Function expressions are assigned to a variable which is not hoisted. Function declarations are not, are assigned to name which is hoisted. Arrow functions are a type of function expression.
 
 ---
 

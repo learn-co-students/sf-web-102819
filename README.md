@@ -42,3 +42,4 @@ Lecture notes for SF's 2nd cohort!
 | Topic            | Code                | Video                |
 | -----            | ----                | -----                |
 | JavaScript and the DOM | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/26-dom-manipulation) | [Link to video](https://youtu.be/9kPt0PgRC-g) |
+| Events Intro | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/27-events-intro) | [Link to video](https://youtu.be/lc-xgt7BXns) |
