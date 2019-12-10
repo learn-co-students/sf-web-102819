@@ -45,6 +45,8 @@ Then you will have demonstrated the skills needed to move on.
 
 ### Javascript Events
 
+#### Score: 1
+
 - **Code:** Did not attach event listeners to respond to events.
 - **Feedback:** You did not successfully add event listeners to respond to the required events. Please review the lessons that cover the methods and syntax for adding event listeners and callbacks to handle events triggered on the page.
 
