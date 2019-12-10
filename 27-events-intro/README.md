@@ -37,7 +37,6 @@ firstBtnOnPage.addEventListener('click', function() {
 ```
 
 > 🤔 _What do these four lines of code code?_
-> 🤓 Here, we tell `addEventListener` to invoke the **anonymous function** passed as the second argument **_when_** the event fires; we're waiting for something to happen then **responding** to this event.
 
 ## Listening for Events 🦻🏼
 
@@ -59,13 +58,6 @@ firstBtnOnPage.addEventListener('click', function() {
 ```
 
 > 🤔 _How can we grab the `comment-form` and listen for events on it?_
->🤓 We can grab the `comment-form` and listen for events on it like so:
-
-```javascript
-const commentForm = document.getElementById('comment-form');
-// OR querySelector
-// const commentForm = document.querySelector('#comment-form');
-```
 
 - Something to look out for. 
   - If we are loading our js files in the `head` tag of our HTML, there is a chance that the JavaScript code we have written will start executing **before our HTML has been loaded and parsed by the browser**. 
@@ -80,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
 ```
 
 > 🤔 _What do these 3 lines of code mean?_
-> 🤓 In the snippet above, we are adding an **event listener** to the document and listening for the `DOMContentLoaded` event. When that event is fired, the anonymous function passed to `addEventListener` will be invoked.
 
 - "`addEventListener()` sets up a function that will be called whenever the specified `event` is delivered to the target. Common targets are HTML `Element`, `Document`, and `Window`" - [MDN `addEventListener` Reference](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 
@@ -246,19 +237,7 @@ elements.map(element => element.length);
 ![request/response cycle](https://developer.mozilla.org/files/4291/client-server.png)
 
 > 🤔 What happens when we submit a form?
-> 🤓 [Forms][mdn-forms] will attempt to make an HTTP `POST` request on **submission**. Recall from Mod2 that our forms would send a `POST` request that was then handled by our controller (remember HTTP and the request/response cycle?). If we give our `form` an `action` attribute, it will try to `POST` to the endpoint specified by the `action` attribute:
 
-```html
-<form id="comment-form" action="/hotdog">
-  <div class="field">
-    <input id="new-comment" type="text" placeholder="New Comment" />
-    <input type="submit" class="btn" value="Submit" />
-  </div>
-</form>
-```
-
-> 🤓 This form ⬆️ will try to send a `POST` request to `/hotdog`.
-> 🤓 If our form **does not have an action attribute** it will attempt to `POST` to the URL we are currently on, making it **appear as though** our page is being refreshed. **Even though it looks like the page is being refreshed, that is not technically what is happening. The form is sending a POST request out into the void...**
 
 - Our JS app is not currently sending data to a server. 
 - We need a way to **prevent** this **default** action of submitting the form...
@@ -305,46 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
 - Since `event.target` is `comment-form` itself, grab input using `querySelector` or `getElementById`:
 - 🆚 _How can we grab the value of the event target, put it in a new paragraph element, and append it to the `div#commentsContainer?`_
 
-```javascript
-document.addEventListener('DOMContentLoaded', function() {
-
-  const commentForm = document.getElementById('comment-form')
-
-  commentForm.addEventListener('submit', function(event) {
-    event.preventDefault() //stop form from POSTING
-
-    const userInputField = event.target.querySelector('#new-comment')
-    //OR document.querySelector('#new-comment')
-
-    const userInputString = userInputField.value
-  })
-
-})
-```
-
-- `userInputField` gives us whole `input` element.
-  - We only care about user's new comment.
-  - Grab the `value` attribute: whatever comment the user typed into the field. 
-  - Refer to the [MDN Docs for `input` tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
-
-- Let's use the info the user typed into the form to add their comment to the page:
-
-```js
-document.addEventListener('DOMContentLoaded', function() {
-  const commentsContainer = document.getElementById('commentsContainer');
-  const commentForm = document.getElementById('comment-form');
-
-  commentForm.addEventListener('submit', function(event) {
-    event.preventDefault() //stop form from POSTING
-
-    const userInputField = event.target.querySelector('#new-comment');
-    const userInputString = userInputField.value;
-    const commentPTag = document.createElement('p');
-    commentPTag.textContent = userInputString;
-    commentsContainer.appendChild(commentPTag);
-  });
-});
-```
 
 - "In an HTML document, the `document.createElement()` method creates the HTML element specified by `tagName`." - [MDN Article on `createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
   - In other words, calling `document.createElement('p')` will create a `p` tag.
