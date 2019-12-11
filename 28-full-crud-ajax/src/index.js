@@ -1,8 +1,12 @@
 // We create allPokemon to save all of our pokemon in an array that is accessible to all functions
 let allPokemon = [];
+let pokemonContainer;
 
 document.addEventListener('DOMContentLoaded', () => {
+	pokemonContainer = document.getElementById('pokemon-container');
+	
 	// Once the DOM is loaded we fetch our pokemon and set up additional event listeners
+	debugger;
 	fetchPokemon();
 	listenToClicks();
 	listenToFormSubmit();
@@ -20,8 +24,7 @@ function fetchPokemon() {
 					// We change the innerHTML of our parent container by mapping over
 					// all of our pokemon (that we got from the database)
 					// and formatting each one with the renderSinglePokemon function
-					const pokemonContainer = document.getElementById('pokemon-container');
-
+					
 					pokemonContainer.innerHTML = allPokemon
 						.map(anything => renderSinglePokemon(anything))
 						.join("");
