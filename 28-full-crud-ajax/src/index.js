@@ -1,10 +1,3 @@
-let stuff;
-
-fetch('http://localhost:3000/pokemon')
-	.then(response => response.json())
-	.then(json => stuff = json);
-
-
 // We create allPokemon to save all of our pokemon in an array that is accessible to all functions
 let allPokemon = [];
 
@@ -16,46 +9,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchPokemon() {
-	// Once a user loads the page we fetch all of our pokemon from our json-server backend
-	fetch('http://localhost:3000/pokemon')
-		.then(response => response.json())
-		.then(allPokemonJson => {
-			// Set the allPokemon array equal to the response we get from the server
-			allPokemon = allPokemonJson;
 
-			const pokemonContainer = document.querySelector('#pokemon-container');
+		// debugger;
+	// Once a user loads the page we fetch all of our pokemon from our json-server backend
+			fetch('http://localhost:3000/pokemon')
+				.then(response => response.json())
+				.then(json => {
+					// Set the allPokemon array equal to the response we get from the server
+					allPokemon = json;
+					// We change the innerHTML of our parent container by mapping over
+					// all of our pokemon (that we got from the database)
+					// and formatting each one with the renderSinglePokemon function
+					const pokemonContainer = document.getElementById('pokemon-container');
+
+					pokemonContainer.innerHTML = allPokemon
+						.map(anything => renderSinglePokemon(anything))
+						.join("");
+				});
 			
-			// We change the innerHTML of our parent container by mapping over
-			// all of our pokemon (that we got from the database)
-			// and formatting each one with the renderSinglePokemon function
-			pokemonContainer.innerHTML = allPokemon
-				.map(pokemon => renderSinglePokemon(pokemon))
-				.join('');
-		});
-}
+
+};
 
 function listenToClicks() {
-	const pokemonContainer = document.querySelector('#pokemon-container');
+
 
 	// We add an event listener to our entire container and later figure what to do with it
-	pokemonContainer.addEventListener('mouseover', event =>
-		handleImageHover(event)
-	);
 
-	pokemonContainer.addEventListener('mouseout', event =>
-		handleImageHover(event)
-	);
-
-	pokemonContainer.addEventListener('click', event => {
-		handleDeleteButtonClick(event);
-	});
 }
 
 function listenToFormSubmit() {
 	// Listen to our form submission event
-	document
-		.getElementById('pokemon-post-form')
-		.addEventListener('submit', event => createPokemon(event));
+	document.getElementById("pokemon-post-form").addEventListener("submit", event => createPokemon(event));
 }
 
 function renderSinglePokemon(pokemon) {
@@ -111,45 +95,39 @@ function flipImage(event) {
 
 function deletePokemon(pokemonId) {
 	// Use fetch with a method of delete to remove this pokemon from the database
-	fetch(`http://localhost:3000/pokemon/${pokemonId}`, {
-		method: 'DELETE'
-	}).then(response => {
-		const pokemonContainer = document.querySelector('#pokemon-container');
+
 
 		// After deleting our pokemon from the database we remove it from the DOM
-		pokemonContainer.removeChild(document.getElementById(pokemonId));
-	});
+
 }
 
 function createPokemon(event) {
 	event.preventDefault();
 
 	// Get all the values from our form
-	const name = document.getElementById('name-input').value;
-	const spriteFront = document.getElementById('sprite-input-front').value;
-	const spriteBack = document.getElementById('sprite-input-back').value;
+	const name = document.getElementById("name-input").value;
+	const spriteFrontUrl = document.getElementById("sprite-input-front").value;
+	const spriteBackUrl = document.getElementById("sprite-input-back").value;
 
 	// Here we create a new pokemon object that we then send to our backend
 	const data = {
 		name: name,
-		sprites: { front: spriteFront, back: spriteBack }
+		sprites: { front: spriteFrontUrl, back: spriteBackUrl}
 	};
 
 	// The body must be a string, also make sure to include headers with a post (patch, or put, sometimes delete) request
-	fetch(`http://localhost:3000/pokemon`, {
+	fetch('http://localhost:3000/pokemon', {
 		method: 'POST',
 		body: JSON.stringify(data),
 		headers: {
-			'Content-Type': 'application/json'
-		}
-	})
+				'Content-Type': 'application/json'
+		}})
 		.then(response => response.json())
-		.then(pokemon => {
-			const pokemonContainer = document.querySelector('#pokemon-container');
-			// We create a new div here because if we replace the entire pokemonContainer all other pokemon will be gone
+		.then(json => {
+			
+
 			const newDiv = document.createElement('div');
-			newDiv.innerHTML = renderSinglePokemon(pokemon); // We need to use innerHTML in order to create html tags etc
-			// We prepend so we can see it pop up at the top (it will move to bottom on page refresh)
+			newDiv.innerHTML = renderSinglePokemon(json);
 			pokemonContainer.prepend(newDiv);
 		});
-}
+};
