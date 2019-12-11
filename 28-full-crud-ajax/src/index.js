@@ -1,3 +1,10 @@
+let stuff;
+
+fetch('http://localhost:3000/pokemon')
+	.then(response => response.json())
+	.then(json => stuff = json);
+
+
 // We create allPokemon to save all of our pokemon in an array that is accessible to all functions
 let allPokemon = [];
 
@@ -17,7 +24,7 @@ function fetchPokemon() {
 			allPokemon = allPokemonJson;
 
 			const pokemonContainer = document.querySelector('#pokemon-container');
-
+			
 			// We change the innerHTML of our parent container by mapping over
 			// all of our pokemon (that we got from the database)
 			// and formatting each one with the renderSinglePokemon function
