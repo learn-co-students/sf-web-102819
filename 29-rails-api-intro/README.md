@@ -3,11 +3,11 @@
 ## Goals 🍲
 
 - [ ] Define the utility of JSON 🧱
+- [ ] Review the HTTP request/response cycle ♻️
 - [ ] Configure a Rails application to behave as a RESTful API 🛰
 - [ ] Access a Rails API via JavaScript 📡
 - [ ] Survey the purpose of CORS 🤝
-- [ ] Recognize where JSON APIs are appropriate 💁🏻‍♀️
-- [ ] Review the HTTP request/response cycle ♻️
+- [ ] Build out a simple fullstack app with a vanilla triple-threat frontend and a RESTful Rails API backend 💁🏻‍♀️
 
 ---
 
@@ -131,6 +131,14 @@ let bartJson = {
 :airplane: `bartJson.root["station"][0].etd["estimate"][0]["minutes"]`
 ```
 
+## The HTTP Request-Response Lifecycle and REST ♻️
+
+> 🤔 What is the HTTP Request-Response Lifecycle again?
+> 🤓 A client sends a request, and a server replies with a response. The request consists of information such as the HTTP version, request method, resource path, header with metadata, and optional body of data. The server sends a response consisting of information including the status code, header with metadata, and an optional body of data.
+
+> 🤔 What is a RESTful API?
+> 🤓 A REpresentational State Transfer Application Programming Interface is a program interface that maps HTTP requests to database CRUD actions. For example, GET /users should Read all User instances in a database, and PATCH /posts/2 should Update the Post instance with an id of 2.
+
 ## Making an API out of Rails 🛰
 
 - Remember `render`? Try: `render json: @animals`
@@ -230,24 +238,39 @@ end
 
 > A web application executes a cross-origin HTTP request when it requests a resource that has a different origin (domain, protocol, or port) from its own.
 
-- CORS is a security feature, a browser law
-- Two separate websites (origins) should not communicate with each other
+- CORS is a security feature, like an apartment complex doorman
+- Two separate websites (origins) should not freely communicate with each other
+  - Requests can be forged through planted scripts
+  - Formal headers (i.e. identification) should be presented
+- Servers must specify who and how resources can be accessed
 
-## When are JSON APIs appropriate? 💁🏻‍♀️
+## Bringing it all home 💁🏻‍♀️
 
-## The HTTP Request-Response Lifecycle ♻️
+1. Make a backend repo
+  a. `rails new YOUR_APP_NAME --api`
+  b. `rails generate resource RESOURCE_NAME ATTRIBUTES`
+  c. `render json:`
+2. Make a frontend repo
+  a. `touch index.html`, `touch style.css`, `touch main.js`
+  b. Boilerplate HTML
+  c. Punt on CSS
+  d. `document.getElementbyId`, `fetch`, `createElement`, `append`, ...
+3. ???
+4. Profit!
 
 ---
 
 ## Takeaways
 
-- [x] A
-- [x] B
-- [x] C
+- [x] JSON is a light-weight, standardized data structure similar to a Ruby hash
+- [x] Rails can be configured as a RESTful API
+- [x] CORS is a means of preventing unauthorized requests from other websites
+- [x] Keep your front and back ends separate
 
 ## Resources
 
 - JSON
+  - [JSON API Specification](https://jsonapi.org/)
   - [Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
   - [JSON in Ruby](https://ruby-doc.org/stdlib-2.6.5/libdoc/json/rdoc/JSON.html)
 - Rails API
@@ -255,3 +278,6 @@ end
   - [Versioning a Rails API](https://chriskottom.com/blog/2017/04/versioning-a-rails-api/)
 - Misc.
   - [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+  - [Understanding CORS](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b)
+  - [How Browsers Work: Behind the scenes of modern web browsers](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
+  - [A typical HTTP session](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session)
