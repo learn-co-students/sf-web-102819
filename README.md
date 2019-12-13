@@ -47,4 +47,4 @@ Lecture notes for SF's 2nd cohort!
 | fetch | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/28-full-crud-ajax) | [Link to video](https://youtu.be/3Iva3zO2VLw) |
 | Rails API | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/29-rails-api-intro) | [Link to video](https://youtu.be/f33v-N-UCIw) |
 | Toy Tale Review | [Link to code]() | [Link to video]() |
-| ES6 | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/31-rails-api-intro) | [Link to video](https://youtu.be/QuBLx_bVo_I) |
+| ES6 | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/31-es6-language-features) | [Link to video](https://youtu.be/QuBLx_bVo_I) |
