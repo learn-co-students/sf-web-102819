@@ -43,6 +43,8 @@ Lecture notes for SF's 2nd cohort!
 | -----            | ----                | -----                |
 | JavaScript and the DOM | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/26-dom-manipulation) | [Link to video](https://youtu.be/9kPt0PgRC-g) |
 | Events Intro | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/27-events-intro) | [Link to video](https://youtu.be/lc-xgt7BXns) |
-| Nokogiri Web Scraping | [Link to code](https://repl.it/@LeviMiller1/webscrapingwithrubysimplifiedfinalcode) | [Link to video](https://youtu.be/-0F3DzQPOHg) 
+| Nokogiri Web Scraping | [Link to code](https://repl.it/@LeviMiller1/webscrapingwithrubysimplifiedfinalcode) | [Link to video](https://youtu.be/-0F3DzQPOHg) |
 | fetch | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/28-full-crud-ajax) | [Link to video](https://youtu.be/3Iva3zO2VLw) |
 | Rails API | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/29-rails-api-intro) | [Link to video](https://youtu.be/f33v-N-UCIw) |
+| Toy Tale Review | [Link to code]() | [Link to video]() |
+| ES6 | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/31-rails-api-intro) | [Link to video](https://youtu.be/QuBLx_bVo_I) |

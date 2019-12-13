@@ -240,3 +240,142 @@ To create a copy of an object use `var ourCopy = {...a}` or Object.assign
 - [Array.prototype.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 - [MPJ Video Series on Functional Programming](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84)
 - [A Gentle Introduction to Composition in JavaScript](http://blog.ricardofilipe.com/post/javascript-composition-for-dummies)
+
+# Functional Programming
+## Table of Contents
+- Benefits of Functional Programming
+- Functional Programming Paradigms
+    - Imperative vs Declarative
+    - Pure Functions
+        - Same Input = Same Output
+        - Avoid Side Effects
+        - Avoid Shared State
+        - Avoid Mutating State
+    - Higher-order Functions and Reusability
+## Benefits of Functional Programming
+- Easy to debug
+- Easy to refactor
+- Easy to test
+- Easy to extend
+- Easy to maintain
+## Functional Programming Paradigms
+### Imperative (Procedural) vs. Declarative (Functional)
+- Imperative (Procedural) Programming
+    - Imperative programs spend lines of code describing the specific steps used to achieve the desired results — the flow control: **How** to do things.
+```javascript
+function double(arr) {
+    let results = []
+    for (let i = 0; i < arr.length; i++) {
+        results.push(arr[i] * 2)
+    }
+    return results
+}
+```
+- Declarative (Functional) Programming
+    - Declarative programs abstract the flow control process, and instead spend lines of code describing the data flow: **What** to do. The *how* gets abstracted away.
+```javascript
+function double(arr) {
+    return arr.map(item => item * 2)
+}
+```
+[Imperative vs. Declarative Programming (in 60 seconds) - YouTube](https://www.youtube.com/watch?v=JqvMTwnbhnA)
+### Pure Functions
+    * Given the same input, always returns the same output
+    * Has no side-effects
+```javascript
+// Pure function
+function add(a, b) {
+    return a + b
+}
+// Non-pure function
+let id = 0
+function addNumsToId(a, b) {
+    return ++id + a + b
+}
+```
+* Avoid shared state
+```javascript
+// SHARED STATE
+// With shared state, the order in which function calls are made changes the result of the function calls.
+let x = 2;
+const x1 = () => x += 1;
+const x2 = () => x *= 2;
+x1();
+x2();
+console.log(x); // 6
+// NOT SHARED STATE
+// It doesn't matter how we call our functions, we will always get the same results
+const x = 2;
+const x1 = y => y + 1;
+const x2 = y => y * 2;
+x2(y);
+x1(y);
+console.log(x1(x2(x))); // 5
+```
+* Function Composition
+    * The process of combining two or more functions in order to produce a new function or perform some computation `f(g(x))`
+* Avoid side effects
+    * A side effect is any application state change that is observable outside the called function other than its return value.
+    
+* Avoid mutating state (Immutability)
+```javascript
+const a = Object.freeze({
+  foo: { greeting: 'Hello' },
+  bar: 'world',
+  baz: '!'
+});
+a.bar = 'Bob';
+// Error: Cannot assign to read only property 'foo' of object Object
+a.foo.greeting = 'Goodbye';
+console.log(`${ a.foo.greeting }, ${ a.bar }${a.baz}`);
+// There are libraries that you can use that will deep freeze an object
+```
+## Higher-Order Functions and Reusability
+A higher order function is a function that takes a function as an argument, or returns a function (currying)
+```javascript
+// Take a function as an argument
+function filter(array, callback) {
+    const newArray = []
+    for (let i = 0; i < array.length; i++) {
+        if(callback(array[i])) {
+            newArray.push(array[i])
+        }
+    }
+    return newArray
+}
+function isEven(num) {
+    return num % 2 === 0
+}
+const ourArray = [1, 2, 3, 4, 5, 6, 7, 8]
+filter(ourArray, isEven)
+// Return a function
+function multiplyBy(multiplier) {
+    return function(num) {
+        return multiplier * num
+    }
+}
+multiplyBy(2)(3)
+const double = multiplyBy(2)
+double(3)
+```
+## Closure
+Closure is when a function is able to “remember” (or access) its lexical scope (the variables outside of itself) even when that function is executed outside that lexical scope (in a different scope).
+```javascript
+// At the time that the `waitASec` function runs, the `ask` function has already finished, and the variable `question` should have gone away, but it didn't because closure preserved it
+function ask(question) {
+    setTimeout(function waitASec() {
+        console.log(question)
+    }, 1000)
+}
+ask("What is closure?")
+```
+# Conclusion
+Functional programming favors:
+* Pure functions instead of shared state & side effects
+* Immutability over mutable data
+* Function composition over imperative flow control
+* Lots of generic, reusable utilities that use higher order functions to act on many data types instead of methods that only operate on their colocated data
+* Declarative rather than imperative code (what to do, rather than how to do it)
+* Expressions over statements
+* Containers & higher order functions over ad-hoc polymorphism
+[Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)

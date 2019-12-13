@@ -2,7 +2,7 @@
 
 ## Goals ✨
 
-- [ ] Practice using `class` and `this` 🧐
+- [ ] Practice creating objects, then using `class` and `this` 🧐
 - [ ] Destructure 🤯
 - [ ] Practice alternative ways of assigning values to keys 🗝
 - [ ] Practice using the spread operator 🥯
@@ -13,6 +13,25 @@
 - [ ] Review hoisting 🏗
 
 ---
+
+## What is ES6? 👽
+
+> The standard for JavaScript is ECMAScript. ... On June 17, 2015, ECMA International published the sixth major version of ECMAScript, which is officially called ECMAScript 2015, and was initially referred to as ECMAScript 6 or ES6.
+
+- Since ECMAScript 2015 (ECMAScript 6), new version of JS released yearly
+- ES6 features:
+  - `const`
+  - Block-scoped variables and functions
+  - Arrow functions
+  - Default function parameters
+  - String templating (` `${Hi mom!}``)
+  - Simplified object creation
+  - Class definition syntax with `class`
+    - `get` and `set`
+    - Inheritance with `extends`
+  - Promises
+- JS a little easier to read and write!
+- Whatever isn't supported by major browsers can be transpiled
 
 ## `class` and `this` 🧐
 
@@ -230,8 +249,6 @@ var anotherOne = "hi";
 
 ## Destructuring & Dynamic Object Keys 🤯
 
-> 
-
 ```javascript
 const spaceship = {
   pilot: 'elon musk',
@@ -284,6 +301,8 @@ const pizzaObj2 = { pizza, restaurant };
 
 > Spread syntax allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
 
+- Expanded means taken out of its container
+
 ```javascript
 // Spread operator with arrays
 const nums = [1, 2, 3];
@@ -292,6 +311,20 @@ const mergedArray = [...nums, 4, 5]; // [1, 2, 3, 4, 5]
 // If we don't use the spread operator we end up with a nested array
 const nestedArray = [nums, 4, 5]; // [[1, 2, 3], 4, 5]
 
+// We can slice arrays to copy them
+let slicedArray = mergedArray.slice();
+// Can also be used to copy arrays
+let spreadArray = [...mergedArray];
+// This is only a reference to the array
+let lazyArray = mergedArray;
+
+// We can use ... with functions!
+function sum(x, y, z) {
+  return x + y + z;
+};
+
+sum(...nums);
+
 // Spread operator with objects
 const pepperoni = { topping: 'Pepperoni' };
 const pizza = {
@@ -299,6 +332,18 @@ const pizza = {
   price: '$8',
   size: 'medium'
 };
+```
+
+- Not to be confused with the rest parameter syntax!
+
+> The rest parameter syntax allows us to represent an indefinite number of arguments as an array.
+
+```javascript
+function multiply(...allTheNums) {
+  return allTheNums.reduce((previous, current) => previous * current);
+};
+
+console.log(multiply(1, 2, 3));
 ```
 
 ---
@@ -318,5 +363,7 @@ const pizza = {
   - [MDN: Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
   - [MDN: Arrow function expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 - Miscellanea
+  - [MDN: JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
   - [MDN: Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
   - [MDN: Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+  - [MDN: Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
