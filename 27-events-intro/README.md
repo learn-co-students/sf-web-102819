@@ -147,7 +147,7 @@ function isEven(num) {
 
 - Hoisting: a _way of thinking_ about how JavaScript is run (not reality)
 - Reality: variable and function declarations are stored in memory during compile phase (before execution phase)
-- Hoisting: variable and function declarations are "moved" to the top of your code
+- Hoisting: (some) variable and function declarations are "moved" to the top of your code
   - **Only declarations are hoisted**_, not initializations..._
 
 ```slack
