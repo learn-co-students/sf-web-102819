@@ -1,111 +1,90 @@
-let addToy = false
+document.addEventListener("DOMContentLoaded", ()=>{
 
-const addBtn = document.querySelector('#new-toy-btn')
-const toyForm = document.querySelector('.container')
-addBtn.addEventListener('click', () => {
-  // hide & seek with the form
-  addToy = !addToy
-  if (addToy) {
-    toyForm.style.display = 'block'
-  } else {
-    toyForm.style.display = 'none'
-  }
-})
+  let addToy = false;
+  const toyUrl = 'http://localhost:3000/toys';
+  const addBtn = document.querySelector('#new-toy-btn');
+  const toyForm = document.querySelector('.add-toy-form');
+  // const toyFormContainer = document.querySelector(".container");
+  const toyFormContainer = document.getElementsByClassName('container')[0];
+  const toyCollectionDiv = document.getElementById("toy-collection");
 
-// Fetching and appending all toys to the DOM
-fetch('http://localhost:3000/toys')
-  .then(resp => resp.json())
-  .then(allToysJSON => {
-    // Append to DOM
-    const toyCollectionDiv = document.getElementById('toy-collection')
+  addBtn.addEventListener('click', event => handleAddToyClick(event));
+  fetchToys();
+  toyForm.addEventListener('submit', event => handleFormSubmit(event));
 
-    allToysJSON.map(toy => {
-      const toyDiv = document.createElement('div')
-      toyDiv.classList.add("card")
-      toyDiv.textContent = toy.name
+  function handleAddToyClick(event) {
+    // hide & seek with the form
+    // debugger;
+    addToy = !addToy
+    if (addToy) {
+      toyFormContainer.style.display = 'block'
+    } else {
+      toyFormContainer.style.display = 'none'
+    };
+  };
 
-      const likeButton = document.createElement('button')
-      likeButton.classList.add("like-btn")
-      likeButton.id = toy.id
-      likeButton.textContent = "Like"
+  function fetchToys() {
+    fetch(toyUrl)
+    .then(response => response.json())
+    .then(json => renderToyArray(json));
+  };
 
-      const likes = document.createElement('p')
-      likes.textContent = toy.likes
+  function renderToyArray(json) {
+    json.forEach(object => renderToyObject(object));
+  };
 
-      toyDiv.appendChild(likes)
-      toyDiv.appendChild(likeButton)
+  function renderToyObject(object) {
+    const cardDiv = document.createElement('div');
+    cardDiv.setAttribute('class', "card");
+    cardDiv.setAttribute('id', `toy-${object.id}`);
+    cardDiv.innerHTML = `
+    <h2>${object.name}</h2>
+    <img src="${object.image}" class="toy-avatar" />
+    <p>${object.likes} Likes </p>
+    <button class="like-btn">Like <3</button>`
+    let button = cardDiv.lastElementChild;
+    button.addEventListener('click', event => handleLike(event));
+    toyCollectionDiv.append(cardDiv);
+  };
 
-      toyCollectionDiv.appendChild(toyDiv)
-    })
-  })
+  function handleLike(event) {
+    console.log([event.target]);
+    let toyId = event.target.parentElement.id.split("-")[1];
+    debugger;
+    let toyLikes = parseInt(event.target.previousElementSibling.innerText) + 1;
+    const data = {
+      id: toyId,
+      likes: toyLikes
+    };
+    fetch(toyUrl + "/" + toyId, {
+      method: 'PATCH',
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }})
+    .then(resp => resp.json())
+    .then(json => {
+      event.target.previousElementSibling.innerText = `${json.likes} Likes`
+    });
+  };
 
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    let data = {
+      "name": event.target.name.value,
+      "image": event.target.image.value,
+      "likes": 0
+    };
 
-// Add listener to form, add new toy to the DOM and persist it in the database
-const formElement = document.getElementsByClassName('add-toy-form')[0]
-
-formElement.addEventListener('submit', function(event){
-  event.preventDefault()
-
-  // Modify DOM
-  const toyName = event.target.name.value
-  // const toyImage = event.target.image.value
-  const toyCollectionDiv = document.getElementById('toy-collection')
-
-  const toyDiv = document.createElement('div')
-  toyDiv.classList.add("card")
-  toyDiv.textContent = toyName
-
-  toyCollectionDiv.appendChild(toyDiv)
-
-  // Persist to DB
-  fetch('http://localhost:3000/toys', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      "name": toyName
-    })
-  })
-})
-
-
-// On click of each like button increment the likes in the DOM and persist to database
-const toyCollectionDiv = document.getElementById('toy-collection')
-
-toyCollectionDiv.addEventListener('click', function(event){
-  if (event.target.tagName === "BUTTON") {
-    // Modify DOM
-    
-    // Select the p tag that contains our likes number
-    const likesElement = event.target.parentElement.querySelector('p')
-    const likes = parseInt(likesElement.textContent)
-    const newLikes = likes + 1
-
-    likesElement.textContent = newLikes
-    
-    // Persist to DB
-    const toyId = event.target.id
-    
-    fetch(`http://localhost:3000/toys/${toyId}`, {
-      method: "PATCH",
-      headers: 
-        {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-      body: JSON.stringify({
-        likes: newLikes
-      })
-    })
-
-  }
-})
+    fetch(toyUrl, {
+      method: 'POST',
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }})
+    .then(resp => resp.json())
+    .then(json => renderToyObject(json));
+  };
 
 
-
-
-
-
-
+});

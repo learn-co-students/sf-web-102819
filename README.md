@@ -46,5 +46,5 @@ Lecture notes for SF's 2nd cohort!
 | Nokogiri Web Scraping | [Link to code](https://repl.it/@LeviMiller1/webscrapingwithrubysimplifiedfinalcode) | [Link to video](https://youtu.be/-0F3DzQPOHg) |
 | fetch | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/28-full-crud-ajax) | [Link to video](https://youtu.be/3Iva3zO2VLw) |
 | Rails API | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/29-rails-api-intro) | [Link to video](https://youtu.be/f33v-N-UCIw) |
-| Toy Tale Review | [Link to code]() | [Link to video]() |
+| Toy Tale Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/30-toy-tale-review) | [Link to video](https://youtu.be/HHRntG89mCQ) |
 | ES6 | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/31-es6-language-features) | [Link to video](https://youtu.be/QuBLx_bVo_I) |

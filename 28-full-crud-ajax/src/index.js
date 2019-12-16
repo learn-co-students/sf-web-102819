@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	pokemonContainer = document.getElementById('pokemon-container');
 	
 	// Once the DOM is loaded we fetch our pokemon and set up additional event listeners
-	debugger;
+	// debugger;
 	fetchPokemon();
 	listenToClicks();
 	listenToFormSubmit();
@@ -34,10 +34,8 @@ function fetchPokemon() {
 };
 
 function listenToClicks() {
-
-
 	// We add an event listener to our entire container and later figure what to do with it
-
+	pokemonContainer.addEventListener('click', event => handleDeleteButtonClick(event));
 }
 
 function listenToFormSubmit() {
@@ -75,12 +73,12 @@ function handleImageHover(event) {
 function handleDeleteButtonClick(event) {
 	const htmlTagName = event.target.tagName;
 	const pokemonId = event.target.dataset.id;
-
+	// debugger;
 	// If a button is clicked we want to delete that pokemon
 	if (htmlTagName === 'BUTTON') {
 		deletePokemon(pokemonId);
-	}
-}
+	};
+};
 
 function flipImage(event) {
 	// Figure out which pokemon has been clicked
@@ -98,11 +96,12 @@ function flipImage(event) {
 
 function deletePokemon(pokemonId) {
 	// Use fetch with a method of delete to remove this pokemon from the database
-
-
+	fetch(`http://localhost:3000/pokemon/${pokemonId}`, { method: 'DELETE' })
+	.then(response => {
 		// After deleting our pokemon from the database we remove it from the DOM
-
-}
+		pokemonContainer.removeChild(document.getElementById(pokemonId));
+	});
+};
 
 function createPokemon(event) {
 	event.preventDefault();
