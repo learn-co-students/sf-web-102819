@@ -48,10 +48,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
   };
 
   function handleLike(event) {
-    console.log([event.target]);
     let toyId = event.target.parentElement.id.split("-")[1];
-    debugger;
-    let toyLikes = parseInt(event.target.previousElementSibling.innerText) + 1;
+    let toyParagraph = event.target.previousElementSibling;
+    let toyLikes = parseInt(toyParagraph.innerText) + 1;
     const data = {
       id: toyId,
       likes: toyLikes
@@ -64,8 +63,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
       }})
     .then(resp => resp.json())
     .then(json => {
-      event.target.previousElementSibling.innerText = `${json.likes} Likes`
+      toyParagraph.innerText = `${json.likes} Likes`
     });
+  };
+
+  function patchLike(event) {
+
   };
 
   function handleFormSubmit(event) {
