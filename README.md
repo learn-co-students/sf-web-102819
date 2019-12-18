@@ -49,3 +49,4 @@ Lecture notes for SF's 2nd cohort!
 | Toy Tale Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/30-toy-tale-review) | [Link to video](https://youtu.be/HHRntG89mCQ) |
 | ES6 | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/31-es6-language-features) | [Link to video](https://youtu.be/QuBLx_bVo_I) |
 | JavaScript Objects | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/32-oo-js) | [Link to video](https://youtu.be/jpFsVwE_eok) |
+| Functional Programming | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/33-functional-programming) | [Link to video](https://youtu.be/jncHytp5Lnc) |
