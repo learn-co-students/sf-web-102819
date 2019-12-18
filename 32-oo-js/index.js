@@ -6,5 +6,6 @@ newRectangleForm.addEventListener("submit", e => {
   const height = e.target.width.value;
   const width = e.target.height.value;
   let rectangle = new Rectangle(width, height);
+  debugger;
   rectangleList.append(rectangle.render());
 });

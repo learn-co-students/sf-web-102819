@@ -8,7 +8,7 @@
 - [ ] Identify the role of prototypes in JS objects 👽
 - [ ] Use the `new` keyword to simplify constructor function ✨
 - [ ] Create objects with `class` 🚀
-- [ ] Compare object in Ruby to objects in JS 🔬
+- [ ] Compare objects in Ruby to objects in JS 🔬
 - [ ] Compare prototypal inheritance to class-based inheritance ⚖️
 - [ ] Static (class) methods in JS
 - [ ] `.call`, `.apply`, `.bind`
@@ -161,7 +161,7 @@ const ditto = Pokemon("ditto", 48);
   - How to add methods to the function's prototype
   - How to use `Object.create` to delegate failed lookups to function's prototype
 
-### The `new` operator 
+### The `new` operator
 
 - The `new` keyword does the following things:
   1. Creates a blank, plain JavaScript object;
@@ -171,6 +171,8 @@ const ditto = Pokemon("ditto", 48);
 - `this`
   - Refers to the global object in the global execution context
   - Refers to the object being called or contructed
+
+> A property of an execution context (global, function or eval) that, in non–strict mode, is always a reference to an object and in strict mode can be any value.
 
 ```javascript
 function Pokemon(name, hp) {
@@ -455,9 +457,9 @@ class Square extends Rectangle {
 
 ## Takeaways
 
-- [x]
-- [x]
-- [x]
+- [x] Object orientation in programming gives us a means of organizing our code.
+- [x] Objects can be created in an analogous way as Ruby.
+- [x] Prototypal inheritance doesn't distinguish between classes and objects.
 
 ## Resources
 

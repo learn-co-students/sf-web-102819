@@ -1,11 +1,11 @@
 class Rectangle {
-	// static rectangles = []
+	static rectangles = []
 
 	constructor(height, width) {
 		this.height = height
 		this.width = width
-		// Rectangle.rectangles.push(this)
-		// this.myFunction = this.myFunction.bind(this)
+		Rectangle.rectangles.push(this)
+		this.myFunction = this.myFunction.bind(this)
 
 		this.element = document.createElement('div')
 		this.element.addEventListener("click", this.increaseSize)
@@ -25,12 +25,12 @@ class Rectangle {
 		this.render()
 	}
 
-	// myFunction() {
-	// 	console.log(this)
-	// }
+	myFunction() {
+		console.log(this)
+	}
 
 	area() {
-		// setTimeout(this.myFunction, 2000)
+		setTimeout(this.myFunction, 2000)
 		return this.height * this.width
 	}
 
@@ -53,7 +53,7 @@ class Rectangle {
 	}
 }
 
-// Rectangle.rectangles = []
+Rectangle.rectangles = []
 
 class Square extends Rectangle {
 	constructor(length) {
@@ -67,7 +67,7 @@ const r1 = new Rectangle(5, 4)
 const r2 = new Rectangle(5, 40)
 
 const s1 = new Square(5)
-// console.log(r1.area())
+console.log(r1.area())
 
-// console.log(Rectangle.largestOf([r1, r2]))
+console.log(Rectangle.largestOf([r1, r2]))
 

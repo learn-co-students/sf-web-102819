@@ -48,3 +48,4 @@ Lecture notes for SF's 2nd cohort!
 | Rails API | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/29-rails-api-intro) | [Link to video](https://youtu.be/f33v-N-UCIw) |
 | Toy Tale Review | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/30-toy-tale-review) | [Link to video](https://youtu.be/HHRntG89mCQ) |
 | ES6 | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/31-es6-language-features) | [Link to video](https://youtu.be/QuBLx_bVo_I) |
+| JavaScript Objects | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/32-oo-js) | [Link to video](https://youtu.be/jpFsVwE_eok) |
