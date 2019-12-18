@@ -1,299 +1,142 @@
-# Introduction to Functional Programming
+# Intro to Functional Programming 🛠
 
-## Table of Contents
-- Functions As First Class Objects
-- Introduction to Closures
-- Functional Programming Paradigms
-	- Imperative vs Declarative
-	- Pure Functions
-    	- Return a value
-    	- Avoid side effects
-  		- Same Input = Same Output
-  - Avoid Shared State & Avoid Mutating State
-  - Composition
-  - Mutable Data
+## Goals 🏙
+
+- [ ] Identify functions as first-class objects 🔭
+- [ ] Review functional programming paradigms 🧐
+- [ ] Create pure and higher-order functions 🏗
+- [ ] Compare functional programming to OOP ⚖️
+- [ ] Identify and build IIFEs 💣
 
 ---
 
-## Benefits of Functional Programming
-- Easier to debug
-- Consistency
-- Easier to test
-- Easier to read
-- Easier to refactor
-- More flexible programs
+## Functions as (first-class) objects 🔭
 
-- Recall that JavaScript is a _multiparadigm_ language; we can solve problems using functional programming and/or object oriented programming principles.
-  - The key difference between the two paradigms is that Object-Oriented programming focuses on **what our objects are**. Perhaps we have an `Animal` class and a `Dog` class that inherits from `Animal`. Our classes are concerned with shared functionality and data. For example, each _instance_ of a dog has its own name; all dogs know how to bark.
-  - Functional programming on the other hand is primarily concerned with **the behavior of our code**––what should this app do, what is the functionality we need? Instead of creating classes with shared state and functionality, we might instead rely on a series of functions that can be _composed_ together to solve a particular problem. We've already seen this in ES6: `.map`, `.reduce`, `.filter`, `.forEach` for example. These ES6 functions do not know or care about the callback that will be passed as an argument:
+> In JavaScript, functions are first-class objects, because they can have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called. In brief, they are Function objects.
 
-```js
-[1, 2, 3].forEach(function() {
-  console.log('I WANT 2 EAT PANCAKES ALL DAY LONG')
-})
+- JavaScript functions are `Function` objects
+  - Functions can be assigned to variables
+  - Functions can be referenced in arrays
+  - Functions can be passed as arguments or returned from other functions
+  - There's a distinction between referring to a function and calling a function
+- Since functions are first-class objects, JavaScript can be written functionally
 
-// 'I WANT 2 EAT PANCAKES ALL DAY LONG' logged 3 times
-```
+> "A programming language is said to have First-class functions when **functions in that language are treated like _any other variable_.** For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable."
 
----
-
-### Functions As First Class Objects
-
-- Functions are **first class objects in JavaScript:**
-  - "A programming language is said to have First-class functions when **functions in that language are treated like _any other variable_.** For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable." - [MDN Article on First Class Functions](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function)
-  - Functions can be assigned to variables:
+- Functions can be assigned to variables:
 
 ```javascript
 const eatDoughnut = function() {
   console.log('I love to eat doughnuts!')
-}
+};
+
+eatDoughnut();
 ```
 
-- Functions can be passed to other functions as arguments (Higher-order function):
-
 ```javascript
-function isCallBackTrue(callbackFn) {
-  if (callbackFn()) {
-    return 'TRUE!'
-  } else {
-    return 'FALSE!'
-  }
-}
+const miss = () => console.log("Miss...");
+const hit = () => console.log("Hit!");
+
+let action = miss;
+if (Math.random() <= 1/6) {
+  action = hit;
+};
+
+action();
 ```
 
-- Functions can also return other functions (Higher-order function):
+- Functions can be passed as arguments or returned from other functions
+- Callback functions: functions passed as a parameter to other functions and called later
 
 ```javascript
-const outerFn = function() {
-  const innerVar = 'I am not a global variable'
-  return function() {
-    console.log(innerVar)
-  }
-}
+function delay(db, waitTime) {
+  let start = Date.now();
+  let now = Date.now();
+  let delta = now - start;
 
-outerFn() //returns a function definition
+  while (delta < waitTime) {
+    now = Date.now();
+    delta = now - start;
+  };
 
-outerFn()() // 'I am not a global variable'
+  cb();
+};
+
+delay(() => {
+  console.log('ding!)
+}, 5000;
+```
+
+- Functions can also return other functions
+
+```javascript
+// Return a function
+function multiplyBy(multiplier) {
+    return function(num) {
+        return multiplier * num;
+    };
+};
+multiplyBy(2)(3);
+const double = multiplyBy(2);
+double(3);
 ```
 
 - Notice the `()()` in the example above. Invoking `outerFn` returns a function. In order to execute the return value of `outerFn` I have to use `()` again.
 
----
+## Functional Programming Paradigms 🧐
 
-### Introduction to Closures
+> Functional programming (often abbreviated FP) is the process of building software by composing pure functions, avoiding shared state, mutable data, and side-effects. Functional programming is declarative rather than imperative, and application state flows through pure functions. Contrast with object oriented programming, where application state is usually shared and colocated with methods in objects.
 
-A closure is when a function is able to “remember” (or access) its lexical scope (the variables outside of itself) even when that function is executed outside that lexical scope (in a different scope).
+- A paradigm is a way of thinking
+- You've probably already implemented functional programming!
 
-```javascript
-// At the time that the `waitASec` function runs, the `ask` function has already finished, and the variable `question` should have gone away, but it didn't because closure preserved it
-function ask(question) {
-	setTimeout(function waitASec() {
-		console.log(question)
-	}, 1000)
-}
+### Imperative (Procedural) vs. Declarative (Functional) ⚖️
 
-ask("What is closure?")
-```
+- Imperative (Procedural) Programs spend lines of code describing the specific steps used to achieve the desired results — the flow control
+  - _**How**_ to do things.
 
----
-
-### Functional Programming Paradigms
-
-**Functional programming** (often abbreviated FP) is the process of building software by composing **pure functions**, avoiding **shared state**, **mutable data**, and **side-effects**. Functional programming is **declarative** rather than **imperative**.
-
-#### Imperative vs Declarative
-- "Functional programming is **declarative** rather than **imperative**, and application state flows through pure functions. Contrast with object oriented programming, where application state is usually shared and colocated with methods in objects." - [Master the JS Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
-   - Imperative programming has more to do with **how** to do things; a series of tasks/operations for the computer to perform.
-   - Declarative programming has more to do with **what** a program needs to accomplish without specifying how a task should be completed
-
-[Imperative vs. Declarative Programming (in 60 seconds)
-](https://www.youtube.com/watch?v=JqvMTwnbhnA)
-
-```javascript
-// Imperative
-function double(arr) {
-	let results = []
-	for (let i = 0; i < arr.length; i++) {
-		results.push(arr[i] * 2)
-	}
-	return results
-}
-
-// Declarative
-function double(arr) {
-	return arr.map(item => item * 2)
-}
-
-// `map`, for instance will transform an array based on a callback, but we do not need to focus on **how** that task is accomplished
-```
-
----
-
-#### Pure Functions
-
-- **Pure Functions** should:
-  - Return a value
-  - Have no side effects
-  - Given the same input, return the same output
-
-```javascript
-// Pure function
-function add(a, b) {
-	return a + b
-}
-
-// Non-pure function
-let id = 0
-function addNumsToId(a, b) {
-	return ++id + a + b
-}
-```
-
-- "A side effect is any application state change that is observable outside the called function other than its return value. Side effects include:
-
-  - Modifying any external variable or object property (e.g., a global variable, or a variable in the parent function scope chain)
-  - Logging to the console
-  - Writing to the screen
-  - Writing to a file
-  - Writing to the network
-  - Triggering any external process
-  - Calling any other functions with side-effects
-  - Side effects are mostly avoided in functional programming, which makes the effects of a program much easier to understand, and much easier to test." - [Master the JS Interview: What is Functional Programming](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
-  
----
-
-#### Avoiding Shared State
-
-- "**Shared state** is any variable, object, or memory space that exists in a shared scope, or as the property of an object being passed between scopes. A shared scope can include global scope or closure scopes. Often, in object oriented programming, objects are shared between scopes by adding properties to other objects." - [Master the JS Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
-
-- In essence, this means we should rely on **immutable data structures** and pure functions. This is very different from Object Oriented programming which relies heavily on shared state. Think of `attr_accessors` in Ruby. The purpose of these methods is to edit and read the _same piece of data_:
-
-```javascript
-// SHARED STATE
-// With shared state, the order in which function calls are made changes the end result.
-let x = 2;
-
-const x1 = () => x += 1;
-const x2 = () => x *= 2;
-
-x1();
-x2();
-
-console.log(x); // 6
-
-
-// NOT SHARED STATE
-// It doesn't matter how we call our functions, we will always get the same results
-const x = 2;
-
-const x1 = y => y + 1;
-const x2 = y => y * 2;
-
-x2(x);
-x1(x);
-
-console.log(x1(x2(x))); // 5
-```
-
----
-
-### Composition
-
-The process of combining two or more functions in order to produce a new function or perform some computation `f(g(x))`
-
-
-- [Article on composition in JavaScript](http://blog.ricardofilipe.com/post/javascript-composition-for-dummies)
-- [Functional Programming Exercises](https://gist.github.com/alexgriff/97cd3cc946f3047828c1196afd66ac61)
-
----
-
-#### Mutable Data
-
-"An immutable object is an object that can’t be modified after it’s created. Conversely, a mutable object is any object which can be modified after it’s created." - [Master the JS Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
-
-```javascript
-const a = Object.freeze({
-  foo: { greeting: 'Hello' },
-  bar: 'world',
-  baz: '!'
-});
-
-a.bar = 'Bob';
-// Error: Cannot assign to read only property 'foo' of object Object
-
-a.foo.greeting = 'Goodbye';
-console.log(`${ a.foo.greeting }, ${ a.bar }${a.baz}`);
-// There are libraries that you can use that will deep freeze an object
-```
-
-To create a copy of an object use `var ourCopy = {...a}` or Object.assign
-
----
-
-### External Resources
-
-- [MDN Article on First Class Functions](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function)
-- [MDN Reference on New JS Featured Introduced by ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla)
-- [MDN Article on Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
-- [Master the JS Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
-- [`Object.freeze`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
-- [Array.prototype.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-- [MPJ Video Series on Functional Programming](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84)
-- [A Gentle Introduction to Composition in JavaScript](http://blog.ricardofilipe.com/post/javascript-composition-for-dummies)
-
-# Functional Programming
-## Table of Contents
-- Benefits of Functional Programming
-- Functional Programming Paradigms
-    - Imperative vs Declarative
-    - Pure Functions
-        - Same Input = Same Output
-        - Avoid Side Effects
-        - Avoid Shared State
-        - Avoid Mutating State
-    - Higher-order Functions and Reusability
-## Benefits of Functional Programming
-- Easy to debug
-- Easy to refactor
-- Easy to test
-- Easy to extend
-- Easy to maintain
-## Functional Programming Paradigms
-### Imperative (Procedural) vs. Declarative (Functional)
-- Imperative (Procedural) Programming
-    - Imperative programs spend lines of code describing the specific steps used to achieve the desired results — the flow control: **How** to do things.
 ```javascript
 function double(arr) {
     let results = []
     for (let i = 0; i < arr.length; i++) {
         results.push(arr[i] * 2)
-    }
-    return results
-}
+    };
+    return results;
+};
 ```
-- Declarative (Functional) Programming
-    - Declarative programs abstract the flow control process, and instead spend lines of code describing the data flow: **What** to do. The *how* gets abstracted away.
+
+- Declarative (Functional) Programming abstract the flow control process, and instead spend lines of code describing the data flow: **What** to do. The *how* gets abstracted away.
+
 ```javascript
 function double(arr) {
-    return arr.map(item => item * 2)
-}
+    return arr.map(item => item * 2);
+};
 ```
+
 [Imperative vs. Declarative Programming (in 60 seconds) - YouTube](https://www.youtube.com/watch?v=JqvMTwnbhnA)
-### Pure Functions
-    * Given the same input, always returns the same output
-    * Has no side-effects
+
+### Pure Functions ❄️
+
+- A _pure_ function:
+  - Always returns the same output given the same input
+  - Has no side-effects
+
 ```javascript
 // Pure function
 function add(a, b) {
-    return a + b
-}
+    return a + b;
+};
 // Non-pure function
-let id = 0
+let id = 0;
 function addNumsToId(a, b) {
-    return ++id + a + b
-}
+    return ++id + a + b;
+};
 ```
-* Avoid shared state
+
+- A _pure_ function also avoids sharing state
+
+> Shared state is any variable, object, or memory space that exists in a shared scope, or as the property of an object being passed between scopes.
+
 ```javascript
 // SHARED STATE
 // With shared state, the order in which function calls are made changes the result of the function calls.
@@ -303,6 +146,7 @@ const x2 = () => x *= 2;
 x1();
 x2();
 console.log(x); // 6
+
 // NOT SHARED STATE
 // It doesn't matter how we call our functions, we will always get the same results
 const x = 2;
@@ -312,54 +156,151 @@ x2(y);
 x1(y);
 console.log(x1(x2(x))); // 5
 ```
-* Function Composition
-    * The process of combining two or more functions in order to produce a new function or perform some computation `f(g(x))`
-* Avoid side effects
-    * A side effect is any application state change that is observable outside the called function other than its return value.
-    
-* Avoid mutating state (Immutability)
+
+- Immutability == Avoid mutating state
+
+> An immutable object is an object that can’t be modified after it’s created. Conversely, a mutable object is any object which can be modified after it’s created.
+
+- Pure functions can be used to perform **Function Composition**
+  - The process of combining two or more functions in order to produce a new function or perform some computation `f(g(x))`
+- A pure function avoids _side effects_
+  - A side effect is any application state change that is observable outside the called function other than its return value.
+
+## Higher-Order Functions and Reusability 🏗
+
+> 🤔 What is a higher order function?
+> 🤓 A higher order function is a function that takes a function as an argument, or returns a function (currying)
+
+Say we want to do something for each item in an array...
+
 ```javascript
-const a = Object.freeze({
-  foo: { greeting: 'Hello' },
-  bar: 'world',
-  baz: '!'
-});
-a.bar = 'Bob';
-// Error: Cannot assign to read only property 'foo' of object Object
-a.foo.greeting = 'Goodbye';
-console.log(`${ a.foo.greeting }, ${ a.bar }${a.baz}`);
-// There are libraries that you can use that will deep freeze an object
+let nums = [1, 2, 3, 4, 5];
+for (let i = 0; i < nums.length; i++) {
+  let item = nums[i];
+  doSomething(item);
+};
+
+let names = ['jose', 'franzi', 'mohammed']
+for (let i = 0; i < aa.length; i++) {
+  let name = names[i];
+  greet(name);
+};
+
+function doSomething(item) {
+  console.log(item);
+};  
+
+function greet(name) {
+  console.log(`Hello! My name is ${name}.`);
+};
 ```
-## Higher-Order Functions and Reusability
-A higher order function is a function that takes a function as an argument, or returns a function (currying)
+
+This code is not DRY! We can do better with functional programming.
+
+```javascript
+function forEach(arr, cb) {
+  for (let i = 0; i < arr.length; i++) {
+  let item = arr[i];
+  cb(item);
+};
+
+let nums = [1, 2, 3, 4, 5];
+forEach(aa, doSomething);
+
+let names = ['jose', 'franzi', 'mohammed'];
+forEach(names, greet);
+
+function doSomething(item) {
+  console.log(item);
+};  
+
+function greet(name) {
+  console.log(`Hello! My name is ${name}.`);
+};
+```
+
+- Functional programming allows us to write more expressive code (and DRYer code)
+
+> 🤔 What about map? What does map do?
+
+```javascript
+function map(arr, cb) {
+  let mapped = [];
+  for (let i = 0; i < arr.length; i++) {
+    let item = arr[i];
+    let mappedValue = cb(item);
+    mapped.push(mappedValue);
+  };
+  return mapped;
+};
+
+let nums = [1, 2, 3, 4, 5];
+let squared = map(nums, (num) => num * num);
+console.log(squared);
+```
+
+> 🤔 What about filter? What does filter do?
+
 ```javascript
 // Take a function as an argument
 function filter(array, callback) {
-    const newArray = []
+    const newArray = [];
     for (let i = 0; i < array.length; i++) {
         if(callback(array[i])) {
             newArray.push(array[i])
-        }
-    }
-    return newArray
-}
+        };
+    };
+    return newArray;
+};
+
 function isEven(num) {
-    return num % 2 === 0
-}
-const ourArray = [1, 2, 3, 4, 5, 6, 7, 8]
-filter(ourArray, isEven)
-// Return a function
-function multiplyBy(multiplier) {
-    return function(num) {
-        return multiplier * num
-    }
-}
-multiplyBy(2)(3)
-const double = multiplyBy(2)
-double(3)
+    return num % 2 === 0;
+};
+
+const ourArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
+filter(ourArray, isEven);
 ```
-## Closure
+
+## IIFEs "iffys" 💣
+
+- Immediately Invoked Function Expressions... wrap it in parenthesis
+
+``` javascript
+let one = function() {
+  console.log(1);
+};
+```
+
+```javascript
+(function() {
+  console.log('Immediate!');
+})();
+```
+
+- Why?! Make private stuff in JavaScript
+- Cut down on namespace pollution
+- See Lodash... you're going to build your own!
+
+```javascript
+let bank = (() => {
+  let balance = 1000;
+  return {
+    seeBalance: () => balance,
+    withdraw: (amount) => {
+      balance -= amount;
+    },
+    deposit: (amount) => {
+      balance += amount;
+    }
+  };
+})();
+```
+
+### Closure 🧘🏿‍♂️
+
 Closure is when a function is able to “remember” (or access) its lexical scope (the variables outside of itself) even when that function is executed outside that lexical scope (in a different scope).
+
 ```javascript
 // At the time that the `waitASec` function runs, the `ask` function has already finished, and the variable `question` should have gone away, but it didn't because closure preserved it
 function ask(question) {
@@ -369,13 +310,35 @@ function ask(question) {
 }
 ask("What is closure?")
 ```
-# Conclusion
-Functional programming favors:
-* Pure functions instead of shared state & side effects
-* Immutability over mutable data
-* Function composition over imperative flow control
-* Lots of generic, reusable utilities that use higher order functions to act on many data types instead of methods that only operate on their colocated data
-* Declarative rather than imperative code (what to do, rather than how to do it)
-* Expressions over statements
-* Containers & higher order functions over ad-hoc polymorphism
-[Master the JavaScript Interview: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+
+## Functional vs. Object-Oriented Programming 🚀
+
+| Topic | FP | OOP |
+| :--- | :--- | :--- |
+| **Definition** | Emphasizes evaluations of functions | Based on concept of objects |
+| **Data** | Immutable | Mutable |
+| **Model** | Declarative (What) | Imperative (How) |
+| **Execution** | Any order | Particular order |
+| **Iteration** | Recursion | Loops |
+| **Elements** | Variables and Functions | Objects and Methods |
+| **Use** | Few things with more operations | Many things with few operations |
+
+---
+
+## Takeaways
+
+- Functional programming favors:
+  - Pure functions instead of shared state & side effects
+  - Immutability over mutable data
+  - Function composition over imperative flow control
+  - Lots of generic, reusable utilities that use higher order functions to act on many data types instead of methods that only operate on their colocated data
+  - Declarative rather than imperative code (what to do, rather than how to do it)
+  - Expressions over statements
+  - Containers & higher order functions
+
+## Resources
+
+- [MDN: Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions)
+- [MDN Article on First Class Functions](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function)
+- [Medium: What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0)
+- [EDUCBA: Functional Programming vs. OOP](https://www.educba.com/functional-programming-vs-oop/)
