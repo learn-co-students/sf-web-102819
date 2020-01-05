@@ -119,3 +119,17 @@ descendants:
 - [State Updates May Be Asynchronous](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/react-props-and-state-lab'>Props And State Lab</a> on Learn.co and start learning to code for free.</p>
+
+# React Pets Review
+- Render All Pets
+	- Pass each pet down to `Pet` component
+		- Fill out pet data in `Pet` component
+	- get all pets from pets.js
+- Filter Pets
+	- Pass down selected filter and set dropdown accordingly
+	- Create on change for when select is changed
+	- on submit change list of pets based on what filters are selected
+- Adopt Pets
+	- (Figure out what we want to do when we adopt a pet)
+	- keep an adopted pets array (ids), or keep property of `isAdopted` on each pet
+	- Show disabled button when you can’t adopt it anymore
