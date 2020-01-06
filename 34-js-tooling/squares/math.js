@@ -1,3 +1,5 @@
-const square = (n) => n * n
+function square(num) {
+  return num*num;
+};
 
 module.exports = square

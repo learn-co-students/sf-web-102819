@@ -2,9 +2,9 @@
 
 ## Goals
 
--[ ] Set up environment of React app
--[ ] Build React components
--[ ] Pass information between components with props
+- [ ] Set up environment of React app
+- [ ] Build React components
+- [ ] Pass information between components with props
 
 ---
 

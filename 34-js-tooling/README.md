@@ -4,11 +4,11 @@
 
 ## Goals 🏗
 
--[ ] Identify the differences between JS run in browser and Node ⚖️
--[ ] Understand how packages are incorporated into JS projects 📦
--[ ] Know what Webpack does for us 🧳
--[ ] Recognize code that requires transpiling 🗼
--[ ] Be able to serve JS code with hot reloading 🔥
+- [ ] Identify the differences between JS run in browser and Node ⚖️
+- [ ] Understand how packages are incorporated into JS projects 📦
+- [ ] Know what Webpack does for us 🧳
+- [ ] Recognize code that requires transpiling 🗼
+- [ ] Be able to serve JS code with hot reloading 🔥
 
 ## Outline 🏢
 
@@ -246,10 +246,10 @@ module.exports = config
 
 ## Takeaways 🛕
 
--[x] Don't remember exact `webpack.config.js` or `.babelrc` contents
--[x] Webpack's job is to take a bunch of files and bundle them into one
--[x] Babel is a transpiler, translating JavaScript into it's most compatible form
--[x] We are using tools that do a lot for us!
+- [x] Don't remember exact `webpack.config.js` or `.babelrc` contents
+- [x] Webpack's job is to take a bunch of files and bundle them into one
+- [x] Babel is a transpiler, translating JavaScript into it's most compatible form
+- [x] We are using tools that do a lot for us!
 
 ## Resources 🚛
 

@@ -93,8 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-eval("\n\nvar square = __webpack_require__(/*! ./math */ \"./math.js\");\n\nconsole.log('1 * 1 is', square(1));\nconsole.log('3 * 3 is', square(3));\nconsole.log('5 * 5 is', square(5));\n\n//# sourceURL=webpack:///./index.js?");
+eval("const square = __webpack_require__(/*! ./math */ \"./math.js\");\n\nconsole.log(`1*1 is `, square(1));\nconsole.log(`2*2 is `, square(2));\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -103,10 +102,9 @@ eval("\n\nvar square = __webpack_require__(/*! ./math */ \"./math.js\");\n\ncons
   !*** ./math.js ***!
   \*****************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-eval("\n\nvar square = function square(n) {\n  return n * n;\n};\n\nmodule.exports = square;\n\n//# sourceURL=webpack:///./math.js?");
+eval("function square(num) {\n  return num * num;\n}\n\n;\nmodule.exports = square;\n\n//# sourceURL=webpack:///./math.js?");
 
 /***/ })
 

@@ -50,3 +50,10 @@ Lecture notes for SF's 2nd cohort!
 | ES6 | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/31-es6-language-features) | [Link to video](https://youtu.be/QuBLx_bVo_I) |
 | JavaScript Objects | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/32-oo-js) | [Link to video](https://youtu.be/jpFsVwE_eok) |
 | Functional Programming | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/33-functional-programming) | [Link to video](https://youtu.be/jncHytp5Lnc) |
+
+## Module 4
+
+| Topic            | Code                | Video                |
+| -----            | ----                | -----                |
+| Intro to JS Tools | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/34-js-tooling) | [Link to video](https://youtu.be/XlBJYzlo5qA) |
+| Intro to React | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/35-intro-to-react) | [Link to video](https://youtu.be/XlBJYzlo5qA) |

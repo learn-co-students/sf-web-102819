@@ -4,17 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "echo 'Hello!'",
     "build": "webpack",
     "start": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.7.7",
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
-    "webpack": "^4.41.2",
+    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "babel-loader": "^8.0.6"
   }
 }
