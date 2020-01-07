@@ -57,3 +57,4 @@ Lecture notes for SF's 2nd cohort!
 | -----            | ----                | -----                |
 | Intro to JS Tools | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/34-js-tooling) | [Link to video](https://youtu.be/XlBJYzlo5qA) |
 | Intro to React | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/35-intro-to-react) | [Link to video](https://youtu.be/XlBJYzlo5qA) |
+| State, Events, Forms | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/36-react-state-events-forms) | [Link to video](https://youtu.be/Q_w7RFGrfhk)
