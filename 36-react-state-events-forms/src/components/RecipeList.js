@@ -5,7 +5,7 @@ const RecipeList = (props) => {
   return (
     <ul>
       {props.recipes.map(recipe => {
-        return <Recipe recipeName={recipe} />;
+        return <Recipe recipeName={recipe} key={recipe} />;
       })}
     </ul>
   );

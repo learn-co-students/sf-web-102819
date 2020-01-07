@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RecipeList from './RecipeList';
+import RecipeForm from './RecipeForm';
 
 class App extends Component {
   constructor() {
@@ -9,13 +10,19 @@ class App extends Component {
     };
   };
 
+  addRecipe = (recipeName) => {
+    this.setState({
+      recipes: [...this.state.recipes, recipeName]
+    });
+  };
+
   render() { 
-      // const recipes = ['Kimchi Fried Rice', 'Fruit', 'Whipped Cream'];
 
       return (
       <div>
         <h1>Recipe List</h1>
         <RecipeList recipes={this.state.recipes} />
+        <RecipeForm makeNewRecipe={this.addRecipe} />
       </div>
     );
   }
