@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const Recipe = props => {
-  return <li>{props.recipeName}</li>;
+const Recipe = (props) => {
+  return <li>{props.recipeName}</li>
 };
 
 export default Recipe;
