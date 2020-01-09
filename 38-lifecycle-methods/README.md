@@ -155,7 +155,7 @@ export default Ticker;
   - Enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. 
   - Any value returned by this lifecycle will be passed as a parameter to componentDidUpdate()
 - **`componentDidUpdate(prevProps, prevState)`**
-  - Invoked immediately after updating occurs. 
+  - Invoked immediately after updating occurs.
   - This method is not called for the initial render
   - Watch out for infinite loops if setting state!
 
@@ -169,7 +169,15 @@ export default Ticker;
 
 ## Takeaways 🍃
 
+- [x] Most Common Use Case For Constructor: Setting up state, creating refs and method binding.
+- [x] Most Common Use Case For Render: Returning component JSX.
+- [x] Most Common Use Case for componentDidMount: Starting AJAX calls to load in data for your component.
+- [x] Most Common Use Case for componentDidUpdate: Reacting (hah!) to committed changes to the DOM.
+- [x] Most Common Use Case for componentWillUnmount: Cleaning up any leftover debris from your component.
+
 ## Resources 🎄
 
 - [Docs](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
 - [React Lifecycle Methods Diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+- [An Introduction to React Lifecycle Events in React JS](https://tylermcginnis.com/an-introduction-to-life-cycle-events-in-react-js/)
+- [React 16 Lifecycle Methods: How and When to Use Them](https://blog.bitsrc.io/react-16-lifecycle-methods-how-and-when-to-use-them-f4ad31fb2282)

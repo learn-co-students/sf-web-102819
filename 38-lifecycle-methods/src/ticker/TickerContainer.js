@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import Ticker from "./Ticker";
 
 class TickerContainer extends Component {
-  state = { value: 0, showTicker: true, interval: null };
+  constructor(props) {
+    super(props);
+    this.state = { value: 0, showTicker: true, interval: null };
+  };
 
   updateTicker = () => {
     this.setState({
@@ -12,16 +15,12 @@ class TickerContainer extends Component {
 
   componentDidMount() {
     const interval = setInterval(() => {
+      console.log("Updating ticker!");
       this.updateTicker();
-      console.log("updating ticker");
     }, 1000);
 
     this.setState({ interval });
-
-    // setTimeout(() => {
-    //   alert("Buy this stuff!")
-    // }, 3000);
-  }
+  };
 
   removeInterval = () => {
     clearInterval(this.state.interval);

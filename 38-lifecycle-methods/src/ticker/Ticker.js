@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 
 class Ticker extends Component {
-  state = { color: "black" };
+  constructor(props) {
+    super(props);
+    this.state = { color: "black" };
+  };
+
+  componentDidMount() {
+    console.log(`${this.constructor.name} did mount.`)
+  }
 
   componentDidUpdate(prevProps, prevState) {
     // if (this.props.value !== prevProps.value) {
@@ -15,6 +22,7 @@ class Ticker extends Component {
     //     });
     //   }
     // }
+    console.log(`${this.constructor.name} did update.`);
 
     if (this.props.value > prevProps.value) {
       this.setState({
@@ -28,7 +36,7 @@ class Ticker extends Component {
   }
 
   componentWillUnmount() {
-    console.log("ticker unmounted!");
+    console.log(`${this.constructor.name} will mount.`);
     this.props.removeInterval()
   }
 
