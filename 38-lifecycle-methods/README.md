@@ -1,64 +1,38 @@
-# React Component Lifecycle
-[Docs](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
+# React Component Lifecycle 🌱
 
-[React Lifecycle Methods Diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+## Goals 🌳
 
-### What should I know
-- *constructor(props)*
-- *render()*
-- *componentDidMount()*
-- *componentDidUpdate()*
-- *componentWillUnmount()*
+- [ ] Review the React component lifecycle
+- [ ] *constructor(props)*
+- [ ] *render()*
+- [ ] *componentDidMount()*
+- [ ] *componentDidUpdate()*
+- [ ] *componentWillUnmount()*
 
-### Birth (Mounting)
-- *constructor(props)*
-  - called before it is mounted
-- static getDerivedStateFromProps(props, state)
-  - invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or null to update nothing.
-- *render()*
-- *componentDidMount()*
-  - invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+---
 
-### Life (Updating)
-- static getDerivedStateFromProps(props, state)
-  - invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or null to update nothing.
-- shouldComponentUpdate(nextProps, nextState)
-  - invoked before rendering when new props or state are being received
-  - returns boolean which determines if render should be called
-- *render()*
-- getSnapshotBeforeUpdate(prevProps, prevState)
-  - invoked right before the most recently rendered output is committed to e.g. the DOM. It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. Any value returned by this lifecycle will be passed as a parameter to componentDidUpdate()
-- *componentDidUpdate(prevProps, prevState)*
-  - invoked immediately after updating occurs. This method is not called for the initial render
-  - watch out for infinite loops if setting state!
+## Theory 🧬
 
-### Death (Unmounting)
-- *componentWillUnmount()*
-  -  invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in componentDidMount().
-
-  # React Lifecycle Methods
-## Theory
-- Show React [lifecycle graphic](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
-	- `Mounting -> Updating -> Unmounting` similar to `Birth -> Changing -> Death`
-	- `render` and `constructor` are lifecycle methods!
-- Add console.logs to each component 
-	- `console.log(“%c Parent Constructor”, “color: blue”)`
-	- Add to `constructor`, `render`, `componentDidMount`
-	- It goes from the top down for **constructor** and then the bottom up for **mounting** and **updating**
-		- The children have to finish rendering before they can signal to the parent that they are done, then the parent is done as well and calls componentDidMount
+- [React component lifecycle graphic](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+- `Mounting -> Updating -> Unmounting` similar to `Birth -> Growth -> Death`
+- `render()` and `constructor()`: lifecycle methods!
+  - Add `console.log` to each component
+  - `console.log(“%c Parent Constructor”, “color: blue”)`
+  - Add to `constructor`, `render`, `componentDidMount`
+- It goes from the top down for **constructor** and then the bottom up for **mounting** and **updating**
+  - The children have to finish rendering before they can signal to the parent that they are done, then the parent is done as well and calls componentDidMount
 - Lifecycle methods
-	- **componentDidMount**(only runs once) -> good for fetch, cause the render already shows something on the page and then your can render more stuff from the fetch
-	- **componentDidUpdate**: takes 2 arguments, `prevProps`, `prevState`. Beware setting state, might be in an infinite loop
-	- **componentWillUnmount**: remove setInterval etc, clean up
+  - **componentDidMount** (only runs once): good for fetch; `render` already shows something on the page, after which we can render more stuff from the fetch
+  - **componentDidUpdate**: takes 2 arguments, `prevProps`, `prevState`. **Beware setting state**, might be in an infinite loop
+  - **componentWillUnmount**: remove setInterval etc, clean up
 
+- Rendering vs Mounting
+  - Render happens _before_ mounting, returning the elements that are supposed to be mounted to the DOM*
+  - *Mounting is adding the actual elements to the DOM*
+  - *Mounting only happens ONCE, rendering can happen multiple times*
 
-- Render vs Mount
-	- *Render happens before mounting, it returns the elements that are supposed to be mounted to the DOM*
-	- *Mounting is adding the actual elements to the DOM*
-	- *Mounting only happens ONCE, rendering can happen multiple times*
+## Practice (Ticker) 🦠
 
-
-## Practice (Ticker)
 - **Update ticker random number**
 	- componentDidMount setInterval to call updateTicker (which sets random number state)
 - **Change ticker color**
@@ -152,3 +126,50 @@ class Ticker extends Component {
 
 export default Ticker;
 ```
+
+## The React Component Lifecycle, Revisted 🧫
+
+### Mounting (Birth)
+
+- **`constructor(props)`**
+  - Called before the component is mounted
+- `static getDerivedStateFromProps(props, state)`
+  - Invoked right before calling the render method, both on the initial mount and on subsequent updates.
+  - Should return an object to update the state, or null to update nothing.
+- **`render()`**
+- **`componentDidMount()`**
+  - Invoked immediately after a component is mounted (inserted into the DOM tree).
+  - Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+
+### Updating (Life)
+
+- `static getDerivedStateFromProps(props, state)`
+  - Invoked right before calling the render method, both on the initial mount and on subsequent updates. 
+  - Should return an object to update the state, or null to update nothing.
+- `shouldComponentUpdate(nextProps, nextState)`
+  - Invoked before rendering when new props or state are being received
+  - Returns boolean which determines if render should be called
+- **`render()**`**
+- `getSnapshotBeforeUpdate(prevProps, prevState)`
+  - Invoked right before the most recently rendered output is committed to e.g. the DOM.
+  - Enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. 
+  - Any value returned by this lifecycle will be passed as a parameter to componentDidUpdate()
+- **`componentDidUpdate(prevProps, prevState)`**
+  - Invoked immediately after updating occurs. 
+  - This method is not called for the initial render
+  - Watch out for infinite loops if setting state!
+
+### Death (Unmounting)
+
+- *componentWillUnmount()*
+  - Invoked immediately before a component is unmounted and destroyed.
+  - Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`.
+
+---
+
+## Takeaways 🍃
+
+## Resources 🎄
+
+- [Docs](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
+- [React Lifecycle Methods Diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
