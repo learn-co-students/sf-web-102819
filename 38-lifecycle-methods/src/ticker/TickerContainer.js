@@ -5,6 +5,13 @@ class TickerContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { value: 0, showTicker: true, interval: null };
+    console.log(`%cTickerContainer Constructor`, "color: blue");
+  };
+
+  componentDidMount() {
+    console.log(`%cTickerContainer did mount!`, "color: blue");
+  
+    this.addTickerInterval();
   };
 
   updateTicker = () => {
@@ -13,13 +20,13 @@ class TickerContainer extends Component {
     });
   };
 
-  componentDidMount() {
+  addTickerInterval = () => {
     const interval = setInterval(() => {
-      console.log("Updating ticker!");
+      // console.log("Updating Ticker!");
       this.updateTicker();
     }, 1000);
 
-    this.setState({ interval });
+    this.setState({ interval: interval });
   };
 
   removeInterval = () => {
@@ -28,12 +35,17 @@ class TickerContainer extends Component {
 
   toggleTickerShow = () => {
     this.setState({ showTicker: !this.state.showTicker });
+    if (!this.state.showTicker) {
+      this.addTickerInterval();
+    };
   };
 
   render() {
+    console.log(`%cTickerContainer Render`, "color: blue");
+
     return (
       <div className="box">
-        <button onClick={this.toggleTickerShow}>Toggle Ticker</button>
+        <button onClick={this.removeInterval}>Toggle Ticker</button>
         {this.state.showTicker && (
           <Ticker
             removeInterval={this.removeInterval}

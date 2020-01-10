@@ -59,3 +59,4 @@ Lecture notes for SF's 2nd cohort!
 | Intro to React | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/35-intro-to-react) | [Link to video](https://youtu.be/XlBJYzlo5qA) |
 | State, Events, Forms | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/36-react-state-events-forms) | [Link to video](https://youtu.be/Q_w7RFGrfhk)
 | Thinking in React | [Link to code](https://github.com/learn-co-students/sf-web-102819/tree/master/37-pet-review) | [Link to video](https://youtu.be/X37Rqcyhwnw)
+| Hogwarts Review | Link to code: [Live](https://github.com/levimllr/hogwarts-sf-web-102819/tree/lecture-recreate)/[Canned](https://github.com/learn-co-students/sf-web-102819/tree/master/39-hog-review-best-practices) | [Link to video](https://youtu.be/K1jqX8oqI8g)

@@ -4,43 +4,32 @@ class Ticker extends Component {
   constructor(props) {
     super(props);
     this.state = { color: "black" };
+
+    console.log(`%cTicker Constructor`, "color: green");
   };
 
   componentDidMount() {
-    console.log(`${this.constructor.name} did mount.`)
-  }
+    console.log(`%cTicker did mount!`, "color: green");
+  };
 
   componentDidUpdate(prevProps, prevState) {
-    // if (this.props.value !== prevProps.value) {
-    //   if (this.state.color === "black") {
-    //     this.setState({
-    //       color: "red"
-    //     });
-    //   } else if (this.state.color === "red") {
-    //     this.setState({
-    //       color: "black"
-    //     });
-    //   }
-    // }
-    console.log(`${this.constructor.name} did update.`);
+    console.log(`%cTicker did update!`, "color: green");
 
     if (this.props.value > prevProps.value) {
-      this.setState({
-        color: "red"
-      });
+      this.setState({ color: "red" })
     } else if (this.props.value < prevProps.value) {
-      this.setState({
-        color: "green"
-      });
+      this.setState({ color: "green" })
     }
-  }
+  };
 
   componentWillUnmount() {
-    console.log(`${this.constructor.name} will mount.`);
-    this.props.removeInterval()
-  }
+    console.log(`%cTicker will unmount!`, "color: green");
+    this.props.removeInterval();
+  };
 
   render() {
+    console.log(`%cTicker Render`, "color: green");
+
     return (
       <div className="box" style={{ color: this.state.color }}>
         {this.props.value}

@@ -149,7 +149,7 @@ export default Ticker;
 - `shouldComponentUpdate(nextProps, nextState)`
   - Invoked before rendering when new props or state are being received
   - Returns boolean which determines if render should be called
-- **`render()**`**
+- **`render()`**
 - `getSnapshotBeforeUpdate(prevProps, prevState)`
   - Invoked right before the most recently rendered output is committed to e.g. the DOM.
   - Enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. 
