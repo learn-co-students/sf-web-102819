@@ -64,7 +64,7 @@ class PaintingsContainer extends React.Component {
               );
             }}
           />
-          <Route
+          {/* <Route
             path="/paintings"
             render={() => (
               <PaintingsList
@@ -73,6 +73,13 @@ class PaintingsContainer extends React.Component {
                 paintings={this.state.paintings}
               />
             )}
+          /> */}
+          <Route
+            path="/paintings"
+            component={PaintingsList
+                handleDelete={this.handleDelete}
+                handleVote={this.handleVote}
+                paintings={this.state.paintings}}
           />
         </Switch>
       </div>

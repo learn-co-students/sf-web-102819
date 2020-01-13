@@ -1,7 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+/painterest/node_modules
+/router-practice/node_modules
 
 # testing
 /coverage

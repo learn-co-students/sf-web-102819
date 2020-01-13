@@ -2,16 +2,8 @@
 
 ## Content
 
-- [ ] Define client-side routing a 📖
-- [ ] Why do we even need routes?
-- What are the drawbacks to client-side routing?
-- But what does React Router Actually Do?
-- Setup and Components
-  - Router
-  - Route
-  - Link
-  - Switch
-  - Redirect
+- [ ] Define client-side routing and its use in a SPA 📖
+- [ ] Create a React applet with routes 🕹
 
 ---
 
@@ -177,12 +169,15 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 ## Takeaways
 
--[x] 
--[x]
--[x]
+-[x] Client-side routing helps us SPA by preventing page refreshes
+-[x] React Router handles client-side routing with special components
+-[x] The building blocks of React Router are `<Router>`, `<Route>`, `<Link>`, `<Switch>`, and `<Redirect>`
 
 ## Resources
 
 - [React Router Official Quick Start Guide](https://reacttraining.com/react-router/web/guides/quick-start)
 - [Tyler McGinnis: Build your own React Router v4](https://tylermcginnis.com/build-your-own-react-router-v4/)
 - [Medium: A Brief Overview of React Router and Client-Side Routing](https://medium.com/@marcellamaki/a-brief-overview-of-react-router-and-client-side-routing-70eb420e8cde)
+- [Tyler McGinnis: Pass props to a component rendered by React Router](https://tylermcginnis.com/react-router-pass-props-to-components/)
+- [React Router Docs: `<Switch>`](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md)
+- [React Router Docs: `<Redirect>`](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Redirect.md)
