@@ -15,6 +15,17 @@ class PaintingContainer extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      api.paintings.getPaintings().then(paintings => {
+        this.setState({ paintings: this.sortPaintings(paintings) });
+      })
+    } else {
+      this.props.history.push('/login');
+    }
+  };
+
   sortPaintings(paintings) {
     return paintings.sort((a, b) => b.votes - a.votes);
   }

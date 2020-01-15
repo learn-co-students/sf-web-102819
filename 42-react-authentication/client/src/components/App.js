@@ -8,6 +8,18 @@ import PaintingContainer from './PaintingContainer';
 import PaintingList from './PaintingList';
 
 class App extends React.Component {
+  state = { currentUser: {} };
+
+  handleLogin = userJson => {
+    const currentUser = userJson;
+    localStorage.setItem('token', currentUser.jwt);
+    this.setState({ currentUser: currentUser });
+  };
+
+  handleLogout = () => {
+    localStorage.removeItem('token');
+    this.setState({ currentUser: {} })
+  };
 
   render() {
     
@@ -17,7 +29,7 @@ class App extends React.Component {
           icon="paint brush"
           title="Painterest"
           description="a sf-web-102819 app"
-          // currentUser={this.state.auth.currentUser}
+          currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
         />
         <div id="content" className="ui container">

@@ -1,4 +1,4 @@
-# Authentation with JWT, Rails, and React 🔐
+# Auth with JWT, Rails, and React 🔐
 
 - [ ] Review the difference between Authentication and Authorization 🎭
 - [ ] Authenticate via a basic controller action in Rails triggered by a fetch in React 🚪

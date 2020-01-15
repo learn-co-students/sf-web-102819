@@ -14,11 +14,22 @@ class Login extends React.Component {
   }
 
   handleChange = e => {
-    console.log(e);
+    const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
+    this.setState({ fields: newFields });
   };
 
   handleSubmit = e => {
-    console.log(e);
+    e.preventDefault();
+    // debugger;
+    api.auth.login(this.state.fields.username, this.state.fields.password)
+    .then(json => {
+      if ( json.error ) {
+        this.setState({ error: true })
+      } else {
+        this.props.handleLogin(json);
+        this.props.history.push('/');
+      };
+    });
   };
 
   render() {
