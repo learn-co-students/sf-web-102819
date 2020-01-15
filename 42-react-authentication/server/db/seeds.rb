@@ -2336,3 +2336,9 @@ paintings.each do |pntg|
     museum: Museum.find_or_create_by(name: museum_name)
   )
 end
+
+User.create(
+  username: "leeroy", 
+  password: "jenkins", 
+  password_confirmation: "jenkins"
+)
