@@ -10,18 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_29_004747) do
+ActiveRecord::Schema.define(version: 20171130142550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "hometown"
+    t.string "birthday"
+    t.string "deathday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "museums", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "paintings", force: :cascade do |t|
+    t.bigint "museum_id"
+    t.bigint "artist_id"
+    t.string "date"
+    t.float "width"
+    t.float "height"
+    t.string "title"
+    t.string "image"
+    t.integer "votes"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_paintings_on_artist_id"
+    t.index ["museum_id"], name: "index_paintings_on_museum_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "bio", default: "I love flavortown, USA"
   end
 
+  add_foreign_key "paintings", "artists"
+  add_foreign_key "paintings", "museums"
 end

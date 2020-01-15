@@ -25,7 +25,7 @@
 - If you are a user, you can post a comment
 - Not signed in, you can view a page, but nothing else
 
-## Rails Authentication Review
+## Rails Authentication Review 🛤
 
 ### bcrypt
 
@@ -42,6 +42,7 @@ Liability - if we have that access, that's dangerous
 - password doesn't get stored in plaintext
 
 ### /login
+
 - route accepts the username and password
 - _authenticate_ - check the username and password
 - start a 'session'
@@ -56,7 +57,7 @@ session[:user_id] = current_user.id # set an encrypted cookie
 session[:user_id] # read from the cookie
 ```
 
-## Authorization Review
+### Authorization Review
 
 - based on the session info
 - `before_action :authenticate`
@@ -66,14 +67,14 @@ session[:user_id] # read from the cookie
   - `Devise`
   - `CanCanCan`
 
-## What's Changed
+## What's Changed ✨
 
 - Single Page app
 - Instead of a form submit, we use `fetch`
 - Cookies not automatically included
 - _How do we include our authentication when we're using fetch?_
 
-## Token Auth
+### Token Auth
 
 - Essentials
   - Instead of a session cookie
@@ -85,26 +86,26 @@ session[:user_id] # read from the cookie
   - How do we store it on the client?
   - How do we send it back and read it?
 
-## Token
+### Token
 
-- identifies user
+- String that identifies user
 - _Cryptographically Secure_
-  - protection from eavesdropping - no one can read the data
-  - protection from tampering - signed, no one can forge a signature
+  - Protection from eavesdropping - no one can read the data
+  - Protection from tampering - signed, no one can forge a signature
 
-## JWT
+### JWT
 
-- format for tokens
-- allows different encryption schemes
-- libraries in different languages for creating them
+- Format for tokens
+- Allows different encryption schemes
+- Libraries in different languages for creating them
 
-### Flow
+## Flow 🦦
 
-- ☑️ user presented with a login form
-- sends the email + password to rails (fetch)
-- rails sends back "token" - contains identifying info
-- react includes the token with future requests to prove that it's still the user
-- rails checks the token and authorizes based on that info
+- User presented with a login form
+- Sends the email + password to Rails (`fetch`)
+- Rails sends back "token" - contains identifying info
+- React includes the token with future requests to prove that it's still the user
+- Rails checks the token and authorizes based on that info
 
 ### Options for storing the token
 
@@ -121,29 +122,27 @@ session[:user_id] # read from the cookie
     - 'stay signed in'
     - XSS
 
-## User Experience
+### User Experience
 
-### Logout
+#### Logout
 
 - Button in navbar
-- clear localStorage
-- update the state so that it reflects that we are logged out
+- Clear localStorage
+- Update the state so that it reflects that we are logged out
 
-### Sign up / Login
+#### Sign up / Login
 
-- error messages for invalid email / password, failed token
+- Error messages for invalid email / password, failed token
 - Redirect on login
 
-## In Rails
-
-**JWT Gem**
+### In Rails with JWT Gem
 
 1. Sign a JWT token in Rails
   -> encode some data
 2. Send it to react app (when the react app sends the username and password)
 3. React app sends it back (store it, send it with the request)
 4. Rails checks validity
--> because of JWT, we can trust that Rails app originally created the data
+  -> because of JWT, we can trust that Rails app originally created the data
 
 - In summary:
   - Rails has a secret key
@@ -151,16 +150,16 @@ session[:user_id] # read from the cookie
   - Send it out, trust that no one else can read it
   - Read it again, trust that no one else can tamper with it
 
-## In React
+### In React
 
-### Sign In
+#### Sign In
 
 1. Login Form
 2. Send the username and password
 3. Store the token (and user info)
 4. Send the token on future requests
 
-### Already Signed In
+#### Already Signed In
 
 1. On mount, check if there is a token
 2. If so, fetch user info
@@ -177,3 +176,5 @@ session[:user_id] # read from the cookie
 
 - Other attack vectors? Liabilities?
 -> Scrub your logs
+
+[Solution](https://github.com/learn-co-curriculum/lectures-starter-code/commit/90a15907615117f961dfc55f9b595143084198fb#diff-3a8884c5b667fda003b25f237e1f300e)
