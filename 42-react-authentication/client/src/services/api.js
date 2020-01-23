@@ -1,8 +1,11 @@
 const API_ROOT = `http://localhost:3001/api/v1`;
 
+const token = localStorage.getItem('token');
+
 const headers = {
   'Content-Type': 'application/json',
-  Accepts: 'application/json'
+  Accepts: 'application/json',
+  Authorization: token
 };
 
 const getPaintings = () => {
@@ -12,7 +15,7 @@ const getPaintings = () => {
 };
 
 const login = (username, password) => {
-  return fetch(`${API_ROOT}/auth`, {
+  return fetch(`${API_ROOT}/auth/`, {
     method: 'POST',
     headers: headers,
     body: JSON.stringify({ username, password })
